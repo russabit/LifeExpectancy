@@ -10,14 +10,17 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/countries_pic"
         android:adjustViewBounds="true"
-        android:layout_marginTop="20dp"/>
+        android:layout_margin="20dp"/>
 
     <EditText
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:hint="What country are you from?" />
+        android:hint="What country are you from?"
+        android:textSize="20sp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="10dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_of_countries"

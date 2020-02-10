@@ -9,24 +9,24 @@ import android.view.ViewGroup
 
 import ru.ruslan.life_expectancy.R
 
-class CountryFragment : Fragment() {
+class SexFragment : Fragment() {
 
     companion object {
-        fun newInstance() = CountryFragment()
+        fun newInstance() = SexFragment()
     }
 
-    private lateinit var viewModel: CountryViewModel
+    private lateinit var viewModel: SexViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_country, container, false)
+        return inflater.inflate(R.layout.fragment_sex, container, false)
     }
 
 /*    override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(CountryViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(SexViewModel::class.java)
         // TODO: Use the ViewModel
     }*/
 
