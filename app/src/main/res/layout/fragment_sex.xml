@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/sex_pic"
+        android:adjustViewBounds="true"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ARE YOU ..."
+        android:textSize="50dp"
+        android:gravity="center"
+        android:layout_margin="20dp"/>
+
+    <Button
+        android:id="@+id/button_female"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FEMALE"
+        android:textSize="50dp"/>
+
+    <Button
+        android:id="@+id/button_male"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MALE"
+        android:textSize="50dp"/>
+
+    <Button
+        android:id="@+id/button_else"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="OTHER"
+        android:textSize="50dp"/>
+
+</LinearLayout>
