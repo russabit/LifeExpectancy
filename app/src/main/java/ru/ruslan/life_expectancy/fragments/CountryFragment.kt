@@ -44,13 +44,11 @@ class CountryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val recyclerView = list_of_countries
+
         adapter = RecyclerAdapter(context, CountriesListCreator.getCountriesList())
-
-        list_of_countries.apply {
-            layoutManager = LinearLayoutManager(activity)
-            adapter = RecyclerAdapter(context, CountriesListCreator.getCountriesList())
-        }
-
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.adapter = adapter
 
         search.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -59,16 +57,16 @@ class CountryFragment : Fragment() {
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                imageViewCountry.visibility = View.GONE
-                Timber.d("onClick")
+
             }
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                imageViewCountry.visibility = View.GONE
+            }
         })
     }
 
     fun filter(text: String) {
-        Timber.d("from inside")
 
         val filteredCountriesList = ArrayList<Country>()
         val countriesList: ArrayList<Country> = CountriesListCreator.getCountriesList()
