@@ -5,12 +5,13 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageViewCountry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/countries_pic"
         android:adjustViewBounds="true"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        android:visibility="visible"/>
 
     <EditText
         android:id="@+id/search"
@@ -26,6 +27,7 @@
         android:id="@+id/list_of_countries"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/search"/>
+        app:layout_constraintTop_toBottomOf="@id/search"
+        android:layout_gravity="center"/>
 
 </LinearLayout>
