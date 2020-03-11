@@ -2,9 +2,10 @@ package ru.ruslan.life_expectancy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
+import ru.ruslan.life_expectancy.fragments.AgeFragment
 import ru.ruslan.life_expectancy.fragments.CountryFragment
-import ru.ruslan.life_expectancy.fragments.SexFragment
+import ru.ruslan.life_expectancy.fragments.GenderFragment
+import ru.ruslan.life_expectancy.fragments.ResultsFragment
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -13,12 +14,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Timber.plant(Timber.DebugTree());
+        Timber.plant(Timber.DebugTree())
 
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.fragment_container, CountryFragment.newInstance(), "sex")
+                .add(R.id.fragment_container, AgeFragment.newInstance(), "sex")
                 .commit()
         }
     }

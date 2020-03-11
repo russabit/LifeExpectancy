@@ -37,8 +37,6 @@ class CountryFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         retainInstance = true
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,9 +54,7 @@ class CountryFragment : Fragment() {
                 Timber.d("Clicked inside")
             }
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 imageViewCountry.visibility = View.GONE
@@ -72,14 +68,12 @@ class CountryFragment : Fragment() {
         val countriesList: ArrayList<Country> = CountriesListCreator.getCountriesList()
 
         for (eachCountry in countriesList) {
-            if (eachCountry.countryName.toLowerCase().contains(text.toLowerCase())) {
+            if (eachCountry.countryName.contains(text, true)) {
                 filteredCountriesList.add(eachCountry)
                 Timber.d("added")
             }
         }
-
         adapter.filterList(filteredCountriesList)
-
     }
 
     /*    override fun onActivityCreated(savedInstanceState: Bundle?) {

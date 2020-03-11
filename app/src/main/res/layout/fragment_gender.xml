@@ -5,40 +5,33 @@
     android:layout_height="match_parent"
     android:gravity="center">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/sex_pic"
-        android:adjustViewBounds="true"/>
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="ARE YOU ..."
-        android:textSize="40sp"
-        android:gravity="center"/>
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/button_female"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FEMALE"
-        android:textSize="40sp"/>
+        android:text="female"
+        android:textSize="30sp"/>
 
     <Button
         android:id="@+id/button_male"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MALE"
-        android:textSize="40sp"/>
+        android:text="male"
+        android:textSize="30sp"/>
 
     <Button
         android:id="@+id/button_else"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="in between"
-        android:textSize="40sp"/>
+        android:text="other"
+        android:textSize="30sp"/>
 
 </LinearLayout>

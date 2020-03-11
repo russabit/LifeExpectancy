@@ -1,4 +1,4 @@
-package ru.ruslan.life_expectancy.fragments
+package ru.ruslan.life_expectancy.Model
 
 import androidx.lifecycle.ViewModel
 
