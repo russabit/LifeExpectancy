@@ -30,6 +30,8 @@ class AgeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+/*        next_button.setOnClickListener {)
+             }*/
     }
 
     companion object {
