@@ -8,7 +8,8 @@ class SharedViewModel : ViewModel() {
     private val selectedCountry = MutableLiveData<Any>()
     private val selectedDateOfBirth = MutableLiveData<Any>()
 
-    fun setGender(gender: String) {
+    //true - male, false - female
+    fun setGender(gender: Boolean) {
         selectedGender.value = gender
     }
 

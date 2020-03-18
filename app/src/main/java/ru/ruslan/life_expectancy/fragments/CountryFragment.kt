@@ -1,5 +1,6 @@
 package ru.ruslan.life_expectancy.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,12 +9,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import kotlinx.android.synthetic.main.fragment_country.*
 import kotlinx.android.synthetic.main.recyclerview_listitem.view.*
 import ru.ruslan.life_expectancy.Model.Country
+import ru.ruslan.life_expectancy.Model.SharedViewModel
+import ru.ruslan.life_expectancy.OnNextFragment
 
 import ru.ruslan.life_expectancy.R
 import ru.ruslan.life_expectancy.adapters.RecyclerAdapter
@@ -23,6 +27,10 @@ import timber.log.Timber
 class CountryFragment : Fragment() {
 
     lateinit var adapter: RecyclerAdapter
+
+    private val model: SharedViewModel by viewModels()
+
+    private lateinit var listener: OnNextFragment
 
     companion object {
         fun newInstance() = CountryFragment()
@@ -82,4 +90,14 @@ class CountryFragment : Fragment() {
         // TODO: Use the ViewModel
     }*/
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is OnNextFragment) {
+            listener = context
+        } else {
+            throw ClassCastException(
+                "$context must implement OnNextFragment."
+            )
+        }
+    }
 }
