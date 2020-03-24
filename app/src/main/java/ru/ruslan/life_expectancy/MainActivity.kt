@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(), OnNextFragment {
         }
     }
 
-    override fun OnNextFragment(fragmentName: AllFragments) {
+    override fun onNextFragment(fragmentName: AllFragments) {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragmentFactory(fragmentName))

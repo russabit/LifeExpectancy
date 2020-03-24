@@ -6,16 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_gender.*
 import ru.ruslan.life_expectancy.Model.SharedViewModel
-import ru.ruslan.life_expectancy.OnNextFragment
 
 import ru.ruslan.life_expectancy.R
 
 class GenderFragment : Fragment() {
-
-    private val model: SharedViewModel by viewModels()
 
     private lateinit var listener: OnNextFragment
 
@@ -42,12 +39,15 @@ class GenderFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        val model = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+
         super.onViewCreated(view, savedInstanceState)
         button_female.setOnClickListener {
             model.setGender(false)
-            listener.OnNextFragment(AllFragments.AGE)}
+            listener.onNextFragment(AllFragments.AGE)}
         button_male.setOnClickListener {
             model.setGender(true)
-            listener.OnNextFragment(AllFragments.AGE)}
+            listener.onNextFragment(AllFragments.AGE)}
     }
 }

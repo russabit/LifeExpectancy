@@ -14,3 +14,7 @@ fun fragmentFactory(allFragments: AllFragments): Fragment {
 enum class AllFragments {
     GENDER, AGE, COUNTRY, RESULT
 }
+
+interface OnNextFragment {
+    fun onNextFragment(fragmentName: AllFragments)
+}

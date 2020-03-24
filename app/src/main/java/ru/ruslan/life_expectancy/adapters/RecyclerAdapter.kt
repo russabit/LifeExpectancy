@@ -12,12 +12,14 @@ import ru.ruslan.life_expectancy.R
 import timber.log.Timber
 
 class RecyclerAdapter(
-    val context: Context?, var countries: ArrayList<Country>) :
+    val context: Context?,
+    var countries: ArrayList<Country>,
+    private val mOnViewListener: OnViewListener) :
     RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.ViewHolder {
         val inflatedView = parent.inflate(R.layout.recyclerview_listitem, false)
-        return ViewHolder(inflatedView)
+        return ViewHolder(inflatedView, mOnViewListener)
     }
 
     override fun onBindViewHolder(holder: RecyclerAdapter.ViewHolder, position: Int) {
@@ -33,7 +35,7 @@ class RecyclerAdapter(
         Timber.d("notified?")
     }
 
-    class ViewHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
+    class ViewHolder(v: View, var onViewListener: OnViewListener) : RecyclerView.ViewHolder(v), View.OnClickListener {
         var country: TextView
 
         init {
@@ -42,9 +44,15 @@ class RecyclerAdapter(
         }
 
         override fun onClick(v: View?) {
-            Timber.d("Clicked!")
+            Timber.d("Clicked from inside ViewHolder!")
+            onViewListener.onViewClick(adapterPosition)
         }
 
+    }
+
+    //better way to implement onClick:
+    interface OnViewListener {
+        fun onViewClick(position: Int)
     }
 
 }

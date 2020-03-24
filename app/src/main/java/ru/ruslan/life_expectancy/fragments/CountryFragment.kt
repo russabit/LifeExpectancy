@@ -4,32 +4,25 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import kotlinx.android.synthetic.main.fragment_country.*
-import kotlinx.android.synthetic.main.recyclerview_listitem.view.*
 import ru.ruslan.life_expectancy.Model.Country
 import ru.ruslan.life_expectancy.Model.SharedViewModel
-import ru.ruslan.life_expectancy.OnNextFragment
 
 import ru.ruslan.life_expectancy.R
 import ru.ruslan.life_expectancy.adapters.RecyclerAdapter
 import ru.ruslan.life_expectancy.utils.CountriesListCreator
 import timber.log.Timber
 
-class CountryFragment : Fragment() {
+class CountryFragment : Fragment(), RecyclerAdapter.OnViewListener{
 
     lateinit var adapter: RecyclerAdapter
-
-    private val model: SharedViewModel by viewModels()
-
+    private val countriesList : ArrayList<Country> = CountriesListCreator.getCountriesList()
     private lateinit var listener: OnNextFragment
 
     companion object {
@@ -52,7 +45,7 @@ class CountryFragment : Fragment() {
 
         val recyclerView = list_of_countries
 
-        adapter = RecyclerAdapter(context, CountriesListCreator.getCountriesList())
+        adapter = RecyclerAdapter(context, CountriesListCreator.getCountriesList(), this)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = adapter
 
@@ -73,7 +66,6 @@ class CountryFragment : Fragment() {
     fun filter(text: String) {
 
         val filteredCountriesList = ArrayList<Country>()
-        val countriesList: ArrayList<Country> = CountriesListCreator.getCountriesList()
 
         for (eachCountry in countriesList) {
             if (eachCountry.countryName.contains(text, true)) {
@@ -99,5 +91,13 @@ class CountryFragment : Fragment() {
                 "$context must implement OnNextFragment."
             )
         }
+    }
+
+    override fun onViewClick(position: Int) {
+
+        val model = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+        model.setCountry(countriesList[position].countryName)
+        Timber.d("country's number is $position")
+        listener.onNextFragment(AllFragments.RESULT)
     }
 }
