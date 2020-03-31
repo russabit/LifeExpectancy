@@ -29,6 +29,4 @@ class MainActivity : AppCompatActivity(), OnNextFragment {
             .commit()
     }
 
-
-
 }

@@ -11,12 +11,12 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_country.*
-import ru.ruslan.life_expectancy.Model.Country
 import ru.ruslan.life_expectancy.Model.SharedViewModel
 
 import ru.ruslan.life_expectancy.R
 import ru.ruslan.life_expectancy.adapters.RecyclerAdapter
 import ru.ruslan.life_expectancy.utils.CountriesListCreator
+import ru.ruslan.life_expectancy.utils.Country
 import timber.log.Timber
 
 class CountryFragment : Fragment(), RecyclerAdapter.OnViewListener{

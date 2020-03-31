@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
-import ru.ruslan.life_expectancy.Model.Country
 import ru.ruslan.life_expectancy.R
+import ru.ruslan.life_expectancy.utils.Country
 import timber.log.Timber
 
 class RecyclerAdapter(

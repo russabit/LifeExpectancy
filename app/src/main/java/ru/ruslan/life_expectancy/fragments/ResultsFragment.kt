@@ -9,8 +9,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_results.*
+import org.threeten.bp.LocalDate
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.format.DateTimeFormatter
+import org.threeten.bp.temporal.ChronoUnit
 import ru.ruslan.life_expectancy.Model.SharedViewModel
 
 import ru.ruslan.life_expectancy.R
@@ -40,14 +42,12 @@ class ResultsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val current = LocalDateTime.now()
-        val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
-        var answer: String =  current.format(formatter)
+        val current = LocalDate.now()
+        val formatter = DateTimeFormatter.ofPattern("d.M.yyyy")
+        val today: String =  current.format(formatter)
+        lateinit var birthday : LocalDate
 
         val model = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
-
-        Timber.d(answer)
-        results_text.text = "Today ($answer) is your XXXish day!"
 
         model.getCountry().observe(requireActivity(),
             Observer { t -> results_country.text = t.toString() })
@@ -56,8 +56,15 @@ class ResultsFragment : Fragment() {
             Observer { t -> if (t) results_gender.text = "male" else results_gender.text = "female"})
 
         model.getDateOfBirth().observe(requireActivity(),
-            Observer { t -> results_age.text = t.toString() })
+            Observer { t ->
+                results_age.text = t.toString()
+                birthday = LocalDate.parse(t.toString(), formatter)
+            })
 
+        val numberOfPassedDays = ChronoUnit.DAYS.between(birthday, current)
+
+        Timber.d(today)
+        results_text.text = "Today ($today) is your ${numberOfPassedDays}th day!"
 
 }
 }

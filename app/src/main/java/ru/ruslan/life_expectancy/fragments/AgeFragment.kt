@@ -37,8 +37,8 @@ class AgeFragment : Fragment() {
         val model = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
         next_button.setOnClickListener {
-            model.setDateOfBirth("${datePicker.dayOfMonth}/${datePicker.month + 1}/${datePicker.year}")
-            Timber.d("${datePicker.dayOfMonth}/${datePicker.month + 1}/${datePicker.year}")
+            model.setDateOfBirth("${datePicker.dayOfMonth}.${datePicker.month+1}.${datePicker.year}")
+            Timber.d("${datePicker.dayOfMonth}/${datePicker.month}/${datePicker.year}")
             listener.onNextFragment(AllFragments.COUNTRY)
         }
     }
