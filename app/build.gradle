@@ -53,5 +53,5 @@ dependencies {
 
     implementation 'com.jakewharton.threetenabp:threetenabp:1.2.2'
 
-    implementation "androidx.fragment:fragment-ktx:1.2.2"
+    implementation "androidx.fragment:fragment-ktx:1.2.3"
 }

@@ -25,6 +25,7 @@ class ResultsFragment : Fragment() {
     }
 
 /*    private lateinit var viewModel: ResultsViewModel*/
+    private lateinit var model : SharedViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,26 +46,21 @@ class ResultsFragment : Fragment() {
         val current = LocalDate.now()
         val formatter = DateTimeFormatter.ofPattern("d.M.yyyy")
         val today: String =  current.format(formatter)
-        lateinit var birthday : LocalDate
 
-        val model = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+        model = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
-        model.getCountry().observe(requireActivity(),
+        model.getCountry().observe(viewLifecycleOwner,
             Observer { t -> results_country.text = t.toString() })
 
-        model.getGender().observe(requireActivity(),
+        model.getGender().observe(viewLifecycleOwner,
             Observer { t -> if (t) results_gender.text = "male" else results_gender.text = "female"})
 
-        model.getDateOfBirth().observe(requireActivity(),
+        model.getDateOfBirth().observe(viewLifecycleOwner,
             Observer { t ->
                 results_age.text = t.toString()
-                birthday = LocalDate.parse(t.toString(), formatter)
+                val birthday = LocalDate.parse(t.toString(), formatter)
+                val numberOfPassedDays = ChronoUnit.DAYS.between(birthday, current)
+                results_text.text = "Today ($today) is your ${numberOfPassedDays}th day!"
             })
-
-        val numberOfPassedDays = ChronoUnit.DAYS.between(birthday, current)
-
-        Timber.d(today)
-        results_text.text = "Today ($today) is your ${numberOfPassedDays}th day!"
-
 }
 }
