@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,12 +27,11 @@ class CountryFragment : Fragment(), RecyclerAdapter.OnViewListener{
     lateinit var adapter: RecyclerAdapter
     private val countriesList : ArrayList<Country> = CountriesListCreator.getCountriesList()
     private lateinit var listener: OnNextFragment
+    private val viewModel : SharedViewModel by activityViewModels()
 
     companion object {
         fun newInstance() = CountryFragment()
     }
-
-    //private lateinit var viewModel: CountryViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_country, container, false)
@@ -88,12 +88,6 @@ class CountryFragment : Fragment(), RecyclerAdapter.OnViewListener{
         adapter.filterList(filteredCountriesList)
     }
 
-    /*    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(CountryViewModel::class.java)
-        // TODO: Use the ViewModel
-    }*/
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnNextFragment) {
@@ -107,8 +101,7 @@ class CountryFragment : Fragment(), RecyclerAdapter.OnViewListener{
 
     override fun onViewClick(position: Int) {
 
-        val model = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
-        model.setCountry(adapter.countries[position].countryName)
+        viewModel.setCountry(adapter.countries[position].countryName)
         Timber.d("country's number is $position")
         listener.onNextFragment(AllFragments.RESULT)
     }

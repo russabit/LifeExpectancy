@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_results.*
@@ -21,8 +23,7 @@ class ResultsFragment : Fragment() {
         fun newInstance() = ResultsFragment()
     }
 
-/*    private lateinit var viewModel: ResultsViewModel*/
-    private lateinit var viewModel : SharedViewModel
+    private val viewModel : SharedViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,20 +32,12 @@ class ResultsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_results, container, false)
     }
 
-/*    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(ResultsViewModel::class.java)
-        // TODO: Use the ViewModel
-    }*/
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val current = LocalDate.now()
         val formatter = DateTimeFormatter.ofPattern("d.M.yyyy")
-        val today: String =  current.format(formatter)
-
-        viewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+        val today: String = current.format(formatter)
 
         viewModel.getCountry().observe(viewLifecycleOwner,
             Observer { t -> results_country.text = t.toString() })
