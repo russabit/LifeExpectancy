@@ -45,13 +45,15 @@ class CountryFragment : Fragment(), RecyclerAdapter.OnViewListener{
 
         val recyclerView = list_of_countries
 
-        adapter = RecyclerAdapter(context, CountriesListCreator.getCountriesList(), this)
+        countriesList.sortBy { it.countryName }
+
+        adapter = RecyclerAdapter(context, countriesList, this)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = adapter
 
         search.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                filter(s.toString())
+                filterByTypingTheName(s.toString())
                 Timber.d("Clicked inside")
             }
 
@@ -63,7 +65,7 @@ class CountryFragment : Fragment(), RecyclerAdapter.OnViewListener{
         })
     }
 
-    fun filter(text: String) {
+    fun filterByTypingTheName(text: String) {
 
         val filteredCountriesList = ArrayList<Country>()
 
