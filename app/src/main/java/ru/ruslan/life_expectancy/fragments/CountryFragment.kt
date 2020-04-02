@@ -10,6 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import kotlinx.android.synthetic.main.fragment_country.*
 import ru.ruslan.life_expectancy.Model.SharedViewModel
 
@@ -57,9 +59,17 @@ class CountryFragment : Fragment(), RecyclerAdapter.OnViewListener{
                 Timber.d("Clicked inside")
             }
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                imageViewCountry.visibility = View.GONE
+            }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+
+        list_of_countries.addOnScrollListener(object : OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
                 imageViewCountry.visibility = View.GONE
             }
         })
