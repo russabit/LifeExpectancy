@@ -5,18 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_results.*
 import org.threeten.bp.LocalDate
-import org.threeten.bp.LocalDateTime
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.temporal.ChronoUnit
 import ru.ruslan.life_expectancy.Model.SharedViewModel
 
 import ru.ruslan.life_expectancy.R
-import timber.log.Timber
 
 class ResultsFragment : Fragment() {
 
@@ -25,7 +22,7 @@ class ResultsFragment : Fragment() {
     }
 
 /*    private lateinit var viewModel: ResultsViewModel*/
-    private lateinit var model : SharedViewModel
+    private lateinit var viewModel : SharedViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,15 +44,15 @@ class ResultsFragment : Fragment() {
         val formatter = DateTimeFormatter.ofPattern("d.M.yyyy")
         val today: String =  current.format(formatter)
 
-        model = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
-        model.getCountry().observe(viewLifecycleOwner,
+        viewModel.getCountry().observe(viewLifecycleOwner,
             Observer { t -> results_country.text = t.toString() })
 
-        model.getGender().observe(viewLifecycleOwner,
+        viewModel.getGender().observe(viewLifecycleOwner,
             Observer { t -> if (t) results_gender.text = "male" else results_gender.text = "female"})
 
-        model.getDateOfBirth().observe(viewLifecycleOwner,
+        viewModel.getDateOfBirth().observe(viewLifecycleOwner,
             Observer { t ->
                 results_age.text = t.toString()
                 val birthday = LocalDate.parse(t.toString(), formatter)

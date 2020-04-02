@@ -17,12 +17,12 @@ class RecyclerAdapter(
     private val mOnViewListener: OnViewListener) :
     RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflatedView = parent.inflate(R.layout.recyclerview_listitem, false)
         return ViewHolder(inflatedView, mOnViewListener)
     }
 
-    override fun onBindViewHolder(holder: RecyclerAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.country.text = countries[position].countryName
     }
 

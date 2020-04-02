@@ -96,7 +96,7 @@ class CountryFragment : Fragment(), RecyclerAdapter.OnViewListener{
     override fun onViewClick(position: Int) {
 
         val model = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
-        model.setCountry(countriesList[position].countryName)
+        model.setCountry(adapter.countries[position].countryName)
         Timber.d("country's number is $position")
         listener.onNextFragment(AllFragments.RESULT)
     }
