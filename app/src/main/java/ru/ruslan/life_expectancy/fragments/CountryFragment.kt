@@ -25,9 +25,9 @@ import timber.log.Timber
 class CountryFragment : Fragment(), RecyclerAdapter.OnViewListener{
 
     lateinit var adapter: RecyclerAdapter
-    private val countriesList : ArrayList<Country> = CountriesListCreator.getCountriesList()
     private lateinit var listener: OnNextFragment
     private val viewModel : SharedViewModel by activityViewModels()
+    private lateinit var countriesList : ArrayList<Country>
 
     companion object {
         fun newInstance() = CountryFragment()
@@ -47,6 +47,7 @@ class CountryFragment : Fragment(), RecyclerAdapter.OnViewListener{
 
         val recyclerView = list_of_countries
 
+        countriesList = viewModel.countriesList
         countriesList.sortBy { it.countryName }
 
         adapter = RecyclerAdapter(context, countriesList, this)
@@ -56,7 +57,6 @@ class CountryFragment : Fragment(), RecyclerAdapter.OnViewListener{
         search.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 filterByTypingTheName(s.toString())
-                Timber.d("Clicked inside")
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -82,7 +82,6 @@ class CountryFragment : Fragment(), RecyclerAdapter.OnViewListener{
         for (eachCountry in countriesList) {
             if (eachCountry.countryName.contains(text, true)) {
                 filteredCountriesList.add(eachCountry)
-                Timber.d("added")
             }
         }
         adapter.filterList(filteredCountriesList)
@@ -101,8 +100,7 @@ class CountryFragment : Fragment(), RecyclerAdapter.OnViewListener{
 
     override fun onViewClick(position: Int) {
 
-        viewModel.setCountry(adapter.countries[position].countryName)
-        Timber.d("country's number is $position")
+        viewModel.setCountry(adapter.countries[position])
         listener.onNextFragment(AllFragments.RESULT)
     }
 }

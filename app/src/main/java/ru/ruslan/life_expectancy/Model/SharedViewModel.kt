@@ -2,11 +2,15 @@ package ru.ruslan.life_expectancy.Model
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kotlin.reflect.KProperty
+import ru.ruslan.life_expectancy.utils.CountriesListCreator
+import ru.ruslan.life_expectancy.utils.Country
 
 class SharedViewModel : ViewModel() {
+
+    val countriesList : ArrayList<Country> = CountriesListCreator.getCountriesList()
+
     private var selectedGender = MutableLiveData<Boolean>()
-    private var selectedCountry = MutableLiveData<Any>()
+    private var selectedCountry = MutableLiveData<Country>()
     private var selectedDateOfBirth = MutableLiveData<Any>()
 
     //true - male, false - female
@@ -18,11 +22,11 @@ class SharedViewModel : ViewModel() {
         return selectedGender
     }
 
-    fun setCountry(country: String) {
+    fun setCountry(country: Country) {
         selectedCountry.value = country
     }
 
-    fun getCountry(): MutableLiveData<Any> {
+    fun getCountry(): MutableLiveData<Country> {
         return selectedCountry
     }
 

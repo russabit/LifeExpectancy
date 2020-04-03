@@ -10,6 +10,7 @@
         android:id="@+id/results_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="days lived"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -40,8 +41,24 @@
         android:text="AGE"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/results_gender"/>/>
+        app:layout_constraintTop_toBottomOf="@+id/results_gender"/>
 
+    <TextView
+        android:id="@+id/results_years_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="years left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/results_age" />
 
+    <TextView
+        android:id="@+id/results_days_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="days left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/results_years_left" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

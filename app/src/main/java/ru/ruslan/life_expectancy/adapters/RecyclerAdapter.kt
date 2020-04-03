@@ -32,7 +32,6 @@ class RecyclerAdapter(
     fun filterList(filteredCountriesList: ArrayList<Country>) {
         this.countries = filteredCountriesList;
         notifyDataSetChanged()
-        Timber.d("notified?")
     }
 
     class ViewHolder(v: View, var onViewListener: OnViewListener) : RecyclerView.ViewHolder(v), View.OnClickListener {

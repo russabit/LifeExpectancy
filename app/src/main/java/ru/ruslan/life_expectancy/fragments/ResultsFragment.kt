@@ -16,6 +16,8 @@ import org.threeten.bp.temporal.ChronoUnit
 import ru.ruslan.life_expectancy.Model.SharedViewModel
 
 import ru.ruslan.life_expectancy.R
+import ru.ruslan.life_expectancy.utils.Country
+import kotlin.math.exp
 
 class ResultsFragment : Fragment() {
 
@@ -24,6 +26,9 @@ class ResultsFragment : Fragment() {
     }
 
     private val viewModel : SharedViewModel by activityViewModels()
+
+    private var gender : Boolean = false
+    private var country : Country = Country()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,10 +45,16 @@ class ResultsFragment : Fragment() {
         val today: String = current.format(formatter)
 
         viewModel.getCountry().observe(viewLifecycleOwner,
-            Observer { t -> results_country.text = t.toString() })
+            Observer { t ->
+                results_country.text = t.countryName
+                country = t
+            })
 
         viewModel.getGender().observe(viewLifecycleOwner,
-            Observer { t -> if (t) results_gender.text = "male" else results_gender.text = "female"})
+            Observer { t -> if (t)
+            { results_gender.text = "male"
+                gender = true}
+            else results_gender.text = "female" })
 
         viewModel.getDateOfBirth().observe(viewLifecycleOwner,
             Observer { t ->
@@ -51,6 +62,11 @@ class ResultsFragment : Fragment() {
                 val birthday = LocalDate.parse(t.toString(), formatter)
                 val numberOfPassedDays = ChronoUnit.DAYS.between(birthday, current)
                 results_text.text = "Today ($today) is your ${numberOfPassedDays}th day!"
+                val expectedAge = if (gender) country.maleYears else country.femaleYears
+                results_years_left.text = "You are expected to live $expectedAge years in your country"
+                val expectedDaysFromAge = expectedAge.toLong() * 365.2425
+                val numberOfDaysLeft = expectedDaysFromAge - numberOfPassedDays
+                results_days_left.text = "i.e. you have approx ${numberOfDaysLeft.toInt()} more days to live"
             })
 }
 }
