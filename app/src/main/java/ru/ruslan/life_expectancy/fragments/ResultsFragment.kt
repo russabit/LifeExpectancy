@@ -19,6 +19,7 @@ import ru.ruslan.life_expectancy.Model.SharedViewModel
 import ru.ruslan.life_expectancy.R
 import ru.ruslan.life_expectancy.utils.Country
 import kotlin.math.exp
+import kotlin.math.roundToLong
 
 class ResultsFragment : Fragment() {
 
@@ -29,7 +30,7 @@ class ResultsFragment : Fragment() {
     private val viewModel : SharedViewModel by activityViewModels()
 
     private var gender : Boolean = false
-    private var country : Country = Country()
+    private var country : Country = Country(1)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,8 +48,8 @@ class ResultsFragment : Fragment() {
 
         viewModel.getCountry().observe(viewLifecycleOwner,
             Observer { t ->
-                results_country.text = t.countryName
                 country = t
+                results_country.text = "${t.countryName} is ranked #${country.rank}"
             })
 
         viewModel.getGender().observe(viewLifecycleOwner,
@@ -67,7 +68,7 @@ class ResultsFragment : Fragment() {
                 results_years_left.text = "You are expected to live $expectedAge years in your country"
                 val expectedDaysFromAge = expectedAge.toLong() * 365.2425
                 val numberOfDaysLeft = expectedDaysFromAge - numberOfPassedDays
-                results_days_left.text = "i.e. you have approx ${numberOfDaysLeft.toInt()} more days to live"
+                results_days_left.text = "i.e. you have approx ${numberOfDaysLeft.toInt()} more days (${(numberOfDaysLeft/365.2425).roundToLong()} years) to live"
                 val expected_date = birthday.plusYears(expectedAge.toLong())
                 results_date_of_death.text = "you are expected to live at least till ${expected_date.year}"
             })

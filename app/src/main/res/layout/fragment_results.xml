@@ -7,20 +7,11 @@
     tools:context=".fragments.ResultsFragment">
 
     <TextView
-        android:id="@+id/results_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="days lived"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
         android:id="@+id/results_country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="COUNTRY"
-        app:layout_constraintTop_toBottomOf="@+id/results_text"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
@@ -44,13 +35,22 @@
         app:layout_constraintTop_toBottomOf="@+id/results_gender"/>
 
     <TextView
+        android:id="@+id/results_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="days lived"
+        app:layout_constraintTop_toBottomOf="@+id/results_age"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
         android:id="@+id/results_years_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="years left"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/results_age" />
+        app:layout_constraintTop_toBottomOf="@+id/results_text" />
 
     <TextView
         android:id="@+id/results_days_left"
