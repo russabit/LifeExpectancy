@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_results.*
 import org.threeten.bp.LocalDate
+import org.threeten.bp.chrono.ChronoLocalDate
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.temporal.ChronoUnit
 import ru.ruslan.life_expectancy.Model.SharedViewModel
@@ -67,6 +68,8 @@ class ResultsFragment : Fragment() {
                 val expectedDaysFromAge = expectedAge.toLong() * 365.2425
                 val numberOfDaysLeft = expectedDaysFromAge - numberOfPassedDays
                 results_days_left.text = "i.e. you have approx ${numberOfDaysLeft.toInt()} more days to live"
+                val expected_date = birthday.plusYears(expectedAge.toLong())
+                results_date_of_death.text = "you are expected to live at least till ${expected_date.year}"
             })
 }
 }

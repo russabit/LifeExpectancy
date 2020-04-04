@@ -9,18 +9,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import kotlinx.android.synthetic.main.fragment_country.*
 import ru.ruslan.life_expectancy.Model.SharedViewModel
-
 import ru.ruslan.life_expectancy.R
 import ru.ruslan.life_expectancy.adapters.RecyclerAdapter
-import ru.ruslan.life_expectancy.utils.CountriesListCreator
 import ru.ruslan.life_expectancy.utils.Country
-import timber.log.Timber
 
 class CountryFragment : Fragment(), RecyclerAdapter.OnViewListener{
 
@@ -101,6 +97,6 @@ class CountryFragment : Fragment(), RecyclerAdapter.OnViewListener{
     override fun onViewClick(position: Int) {
 
         viewModel.setCountry(adapter.countries[position])
-        listener.onNextFragment(AllFragments.RESULT)
+        listener.onNextFragment(AllFragmentNames.RESULT)
     }
 }

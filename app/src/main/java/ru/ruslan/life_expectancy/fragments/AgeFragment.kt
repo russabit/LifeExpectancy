@@ -38,7 +38,7 @@ class AgeFragment : Fragment() {
         next_button.setOnClickListener {
             viewModel.setDateOfBirth("${datePicker.dayOfMonth}.${datePicker.month+1}.${datePicker.year}")
             Timber.d("${datePicker.dayOfMonth}/${datePicker.month}/${datePicker.year}")
-            listener.onNextFragment(AllFragments.COUNTRY)
+            listener.onNextFragment(AllFragmentNames.COUNTRY)
         }
     }
 

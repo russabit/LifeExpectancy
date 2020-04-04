@@ -61,4 +61,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/results_years_left" />
 
+    <TextView
+        android:id="@+id/results_date_of_death"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="date of death"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/results_days_left" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
