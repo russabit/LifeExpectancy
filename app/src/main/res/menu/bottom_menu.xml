@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_songs"
+        android:id="@+id/new_person"
         android:icon="@drawable/ic_face_black_24dp"
         android:title="New"/>
 
     <item
-        android:id="@+id/navigation_albums"
+        android:id="@+id/list_of_saved_persons"
         android:icon="@drawable/ic_bookmark_border_black_24dp"
         android:title="Saved"/>
 
