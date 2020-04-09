@@ -8,10 +8,12 @@ import ru.ruslan.life_expectancy.utils.Country
 class SharedViewModel : ViewModel() {
 
     val countriesList : ArrayList<Country> = CountriesListCreator.getCountriesList()
+    val arrayListSavedPerson = ArrayList<SavedPerson>()
 
     private var selectedGender = MutableLiveData<Boolean>()
     private var selectedCountry = MutableLiveData<Country>()
     private var selectedDateOfBirth = MutableLiveData<Any>()
+    private var savedPersons = MutableLiveData<ArrayList<SavedPerson>>()
 
     //true - male, false - female
     fun setGender(gender: Boolean) {
@@ -36,6 +38,15 @@ class SharedViewModel : ViewModel() {
 
     fun getDateOfBirth(): MutableLiveData<Any> {
         return selectedDateOfBirth
+    }
+
+    fun setSavedPersons(savedPerson: SavedPerson) {
+        arrayListSavedPerson.add(savedPerson)
+        savedPersons.value = arrayListSavedPerson
+    }
+
+    fun getSavedPersons(): MutableLiveData<ArrayList<SavedPerson>> {
+        return savedPersons
     }
 
 }

@@ -15,27 +15,26 @@ import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import kotlinx.android.synthetic.main.fragment_country.*
 import ru.ruslan.life_expectancy.Model.SharedViewModel
 import ru.ruslan.life_expectancy.R
-import ru.ruslan.life_expectancy.adapters.RecyclerAdapter
+import ru.ruslan.life_expectancy.adapters.CountriesRecyclerAdapter
 import ru.ruslan.life_expectancy.utils.Country
 
-class CountryFragment : Fragment(), RecyclerAdapter.OnViewListener{
+class CountryFragment : Fragment(), CountriesRecyclerAdapter.OnViewListener {
 
-    lateinit var adapter: RecyclerAdapter
+    lateinit var adapter: CountriesRecyclerAdapter
     private lateinit var listener: OnNextFragment
-    private val viewModel : SharedViewModel by activityViewModels()
-    private lateinit var countriesList : ArrayList<Country>
+    private val viewModel: SharedViewModel by activityViewModels()
+    private lateinit var countriesList: ArrayList<Country>
 
     companion object {
         fun newInstance() = CountryFragment()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_country, container, false)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        retainInstance = true
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,7 +45,7 @@ class CountryFragment : Fragment(), RecyclerAdapter.OnViewListener{
         countriesList = viewModel.countriesList
         countriesList.sortBy { it.countryName }
 
-        adapter = RecyclerAdapter(context, countriesList, this)
+        adapter = CountriesRecyclerAdapter(context, countriesList, this)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = adapter
 
@@ -95,7 +94,6 @@ class CountryFragment : Fragment(), RecyclerAdapter.OnViewListener{
     }
 
     override fun onViewClick(position: Int) {
-
         viewModel.setCountry(adapter.countries[position])
         listener.onNextFragment(AllFragmentNames.RESULT)
     }

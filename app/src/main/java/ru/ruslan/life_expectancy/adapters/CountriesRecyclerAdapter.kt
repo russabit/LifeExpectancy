@@ -11,14 +11,14 @@ import ru.ruslan.life_expectancy.R
 import ru.ruslan.life_expectancy.utils.Country
 import timber.log.Timber
 
-class RecyclerAdapter(
+class CountriesRecyclerAdapter(
     val context: Context?,
     var countries: ArrayList<Country>,
     private val mOnViewListener: OnViewListener) :
-    RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+    RecyclerView.Adapter<CountriesRecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflatedView = parent.inflate(R.layout.recyclerview_listitem, false)
+        val inflatedView = parent.inflate(R.layout.rv_listitem_country, false)
         return ViewHolder(inflatedView, mOnViewListener)
     }
 
@@ -56,6 +56,6 @@ class RecyclerAdapter(
 
 }
 
-private fun ViewGroup.inflate(@LayoutRes layoutRes: Int,
+fun ViewGroup.inflate(@LayoutRes layoutRes: Int,
     attachToRoot: Boolean = false): View =
     LayoutInflater.from(context).inflate(layoutRes, this, attachToRoot)
