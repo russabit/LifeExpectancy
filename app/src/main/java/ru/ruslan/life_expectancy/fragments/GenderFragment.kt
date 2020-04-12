@@ -15,7 +15,7 @@ import ru.ruslan.life_expectancy.R
 class GenderFragment : Fragment() {
 
     private lateinit var listener: OnNextFragment
-    private val viewModel : SharedViewModel by activityViewModels()
+    private val viewModel: SharedViewModel by activityViewModels()
 
     companion object {
         fun newInstance() = GenderFragment()
@@ -44,9 +44,11 @@ class GenderFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         button_female.setOnClickListener {
             viewModel.setGender(false)
-            listener.onNextFragment(AllFragmentNames.AGE)}
+            listener.onNextFragment(AllFragmentNames.AGE)
+        }
         button_male.setOnClickListener {
             viewModel.setGender(true)
-            listener.onNextFragment(AllFragmentNames.AGE)}
+            listener.onNextFragment(AllFragmentNames.AGE)
+        }
     }
 }

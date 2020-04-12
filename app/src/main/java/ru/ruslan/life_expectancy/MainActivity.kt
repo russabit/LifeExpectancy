@@ -43,10 +43,10 @@ class MainActivity : AppCompatActivity(), OnNextFragment {
     }
 
     override fun onNextFragment(fragmentName: AllFragmentNames) {
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.fragment_container, fragmentFactory(fragmentName))
-                .addToBackStack(null)
-                .commit()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragmentFactory(fragmentName))
+            .addToBackStack(null)
+            .commit()
     }
 }

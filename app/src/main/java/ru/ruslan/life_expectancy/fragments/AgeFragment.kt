@@ -17,7 +17,7 @@ class AgeFragment : Fragment() {
 
     private lateinit var listener: OnNextFragment
 
-    private val viewModel : SharedViewModel by activityViewModels()
+    private val viewModel: SharedViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +36,7 @@ class AgeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         next_button.setOnClickListener {
-            viewModel.setDateOfBirth("${datePicker.dayOfMonth}.${datePicker.month+1}.${datePicker.year}")
+            viewModel.setDateOfBirth("${datePicker.dayOfMonth}.${datePicker.month + 1}.${datePicker.year}")
             Timber.d("${datePicker.dayOfMonth}/${datePicker.month}/${datePicker.year}")
             listener.onNextFragment(AllFragmentNames.COUNTRY)
         }
@@ -45,7 +45,7 @@ class AgeFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() = AgeFragment()
-            }
+    }
 
 
     override fun onAttach(context: Context) {

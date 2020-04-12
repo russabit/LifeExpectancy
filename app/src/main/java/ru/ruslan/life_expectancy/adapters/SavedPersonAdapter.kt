@@ -1,6 +1,5 @@
 package ru.ruslan.life_expectancy.adapters
 
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -13,10 +12,12 @@ import timber.log.Timber
 
 class SavedPersonAdapter(
     private val listOfPersons: List<SavedPerson>,
-    private val onViewListener: OnViewListener) :
+    private val onViewListener: OnViewListener
+) :
     RecyclerView.Adapter<SavedPersonAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View, var onViewListener: OnViewListener) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    class ViewHolder(itemView: View, var onViewListener: OnViewListener) :
+        RecyclerView.ViewHolder(itemView), View.OnClickListener {
         val imageView: ImageView = itemView.image_savedperson
         val name: TextView = itemView.name_savedperson
         val birthDate: TextView = itemView.birthdate_savedperson
@@ -43,7 +44,7 @@ class SavedPersonAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentPerson = listOfPersons[position]
         holder.name.text = currentPerson.name
-        holder.birthDate.text = currentPerson.dateOfBirth
+        holder.birthDate.text = currentPerson.birthday
         holder.imageView.setImageResource(if (currentPerson.gender) R.drawable.ic_person_black_24dp else R.drawable.ic_person_outline_black_24dp)
     }
 

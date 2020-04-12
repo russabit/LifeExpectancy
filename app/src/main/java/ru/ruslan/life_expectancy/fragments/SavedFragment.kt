@@ -18,9 +18,9 @@ import timber.log.Timber
 
 class SavedFragment : Fragment(), SavedPersonAdapter.OnViewListener {
     private lateinit var listener: OnNextFragment
-    private lateinit var listOfPersons : List<SavedPerson>
+    private lateinit var listOfPersons: List<SavedPerson>
     private lateinit var adapter: SavedPersonAdapter
-    private val viewModel : SharedViewModel by activityViewModels()
+    private val viewModel: SharedViewModel by activityViewModels()
 
     companion object {
         fun newInstance() = SavedFragment()

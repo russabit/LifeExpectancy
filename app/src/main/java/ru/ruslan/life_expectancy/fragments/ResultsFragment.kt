@@ -26,11 +26,11 @@ class ResultsFragment : Fragment() {
         fun newInstance() = ResultsFragment()
     }
 
-    private val viewModel : SharedViewModel by activityViewModels()
+    private val viewModel: SharedViewModel by activityViewModels()
     private lateinit var listener: OnNextFragment
     private var birthDate: String = ""
-    private var gender : Boolean = false
-    private var country : Country = Country(1)
+    private var gender: Boolean = false
+    private var country: Country = Country(1)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,10 +53,12 @@ class ResultsFragment : Fragment() {
             })
 
         viewModel.getGender().observe(viewLifecycleOwner,
-            Observer { t -> if (t)
-            { results_gender.text = "male"
-                gender = true}
-            else results_gender.text = "female" })
+            Observer { t ->
+                if (t) {
+                    results_gender.text = "male"
+                    gender = true
+                } else results_gender.text = "female"
+            })
 
         viewModel.getDateOfBirth().observe(viewLifecycleOwner,
             Observer { t ->
@@ -66,18 +68,27 @@ class ResultsFragment : Fragment() {
                 val numberOfPassedDays = ChronoUnit.DAYS.between(birthday, current)
                 results_text.text = "Today ($today) is your ${numberOfPassedDays}th day!"
                 val expectedAge = if (gender) country.maleYears else country.femaleYears
-                results_years_left.text = "You are expected to live $expectedAge years in your country"
+                results_years_left.text =
+                    "You are expected to live $expectedAge years in your country"
                 val expectedDaysFromAge = expectedAge.toLong() * 365.2425
                 val numberOfDaysLeft = expectedDaysFromAge - numberOfPassedDays
-                results_days_left.text = "i.e. you have approx ${numberOfDaysLeft.toInt()} more days (${(numberOfDaysLeft/365.2425).roundToLong()} years) to live"
+                results_days_left.text =
+                    "i.e. you have approx ${numberOfDaysLeft.toInt()} more days (${(numberOfDaysLeft / 365.2425).roundToLong()} years) to live"
                 val expected_date = birthday.plusYears(expectedAge.toLong())
-                results_date_of_death.text = "you are expected to live at least till ${expected_date.year}"
+                results_date_of_death.text =
+                    "you are expected to live at least till ${expected_date.year}"
             })
 
         save_button.setOnClickListener {
-                viewModel.setSavedPersons(SavedPerson("person 1", birthDate, gender, country))
-            Timber.d(SavedPerson("person 1", birthDate, gender, country).toString())
-                listener.onNextFragment(AllFragmentNames.SAVED)
+            viewModel.setSavedPersons(
+                SavedPerson(
+                    edit_text_name.text.toString(),
+                    birthDate,
+                    gender,
+                    country
+                )
+            )
+            listener.onNextFragment(AllFragmentNames.SAVED)
         }
     }
 

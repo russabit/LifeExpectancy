@@ -14,7 +14,8 @@ import timber.log.Timber
 class CountriesRecyclerAdapter(
     val context: Context?,
     var countries: ArrayList<Country>,
-    private val mOnViewListener: OnViewListener) :
+    private val mOnViewListener: OnViewListener
+) :
     RecyclerView.Adapter<CountriesRecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,7 +35,8 @@ class CountriesRecyclerAdapter(
         notifyDataSetChanged()
     }
 
-    class ViewHolder(v: View, var onViewListener: OnViewListener) : RecyclerView.ViewHolder(v), View.OnClickListener {
+    class ViewHolder(v: View, var onViewListener: OnViewListener) : RecyclerView.ViewHolder(v),
+        View.OnClickListener {
         var country: TextView
 
         init {
@@ -56,6 +58,8 @@ class CountriesRecyclerAdapter(
 
 }
 
-fun ViewGroup.inflate(@LayoutRes layoutRes: Int,
-    attachToRoot: Boolean = false): View =
+fun ViewGroup.inflate(
+    @LayoutRes layoutRes: Int,
+    attachToRoot: Boolean = false
+): View =
     LayoutInflater.from(context).inflate(layoutRes, this, attachToRoot)
