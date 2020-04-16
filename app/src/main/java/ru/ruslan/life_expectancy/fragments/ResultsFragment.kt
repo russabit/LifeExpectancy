@@ -46,6 +46,7 @@ class ResultsFragment : Fragment() {
         val formatter = DateTimeFormatter.ofPattern("d.M.yyyy")
         val today: String = current.format(formatter)
 
+        //get country by its name from the list of countries from viewmodel??
         viewModel.getCountry().observe(viewLifecycleOwner,
             Observer { t ->
                 country = t
@@ -53,16 +54,10 @@ class ResultsFragment : Fragment() {
             })
 
         viewModel.getGender().observe(viewLifecycleOwner,
-            Observer { t ->
-                if (t) {
-                    results_gender.text = "male"
-                    gender = true
-                } else results_gender.text = "female"
-            })
+            Observer { t -> if (t) gender = true })
 
         viewModel.getDateOfBirth().observe(viewLifecycleOwner,
             Observer { t ->
-                results_age.text = t.toString()
                 birthDate = t.toString()
                 val birthday = LocalDate.parse(t.toString(), formatter)
                 val numberOfPassedDays = ChronoUnit.DAYS.between(birthday, current)
@@ -76,7 +71,7 @@ class ResultsFragment : Fragment() {
                     "i.e. you have approx ${numberOfDaysLeft.toInt()} more days (${(numberOfDaysLeft / 365.2425).roundToLong()} years) to live"
                 val expected_date = birthday.plusYears(expectedAge.toLong())
                 results_date_of_death.text =
-                    "you are expected to live at least till ${expected_date.year}"
+                    "That means you are expected to live at least till ${expected_date.year}"
             })
 
         save_button.setOnClickListener {
@@ -85,7 +80,7 @@ class ResultsFragment : Fragment() {
                     edit_text_name.text.toString(),
                     birthDate,
                     gender,
-                    country
+                    country.countryName
                 )
             )
             listener.onNextFragment(AllFragmentNames.SAVED)

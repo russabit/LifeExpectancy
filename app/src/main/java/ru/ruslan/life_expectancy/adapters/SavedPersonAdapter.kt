@@ -11,12 +11,13 @@ import ru.ruslan.life_expectancy.R
 import timber.log.Timber
 
 class SavedPersonAdapter(
-    private val listOfPersons: List<SavedPerson>,
     private val onViewListener: OnViewListener
 ) :
     RecyclerView.Adapter<SavedPersonAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View, var onViewListener: OnViewListener) :
+    private var persons = emptyList<SavedPerson>()
+
+    inner class ViewHolder(itemView: View, var onViewListener: OnViewListener) :
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
         val imageView: ImageView = itemView.image_savedperson
         val name: TextView = itemView.name_savedperson
@@ -32,6 +33,11 @@ class SavedPersonAdapter(
         }
     }
 
+    internal fun setPersons(persons: List<SavedPerson>) {
+        this.persons = persons
+        notifyDataSetChanged()
+    }
+
     interface OnViewListener {
         fun onViewClick(position: Int)
     }
@@ -42,11 +48,11 @@ class SavedPersonAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val currentPerson = listOfPersons[position]
+        val currentPerson = persons[position]
         holder.name.text = currentPerson.name
         holder.birthDate.text = currentPerson.birthday
         holder.imageView.setImageResource(if (currentPerson.gender) R.drawable.ic_person_black_24dp else R.drawable.ic_person_outline_black_24dp)
     }
 
-    override fun getItemCount(): Int = listOfPersons.size
+    override fun getItemCount(): Int = persons.size
 }

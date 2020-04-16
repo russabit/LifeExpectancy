@@ -45,7 +45,7 @@ class CountryFragment : Fragment(), CountriesRecyclerAdapter.OnViewListener {
         countriesList = viewModel.countriesList
         countriesList.sortBy { it.countryName }
 
-        adapter = CountriesRecyclerAdapter(context, countriesList, this)
+        adapter = CountriesRecyclerAdapter(activity, countriesList, this)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = adapter
 

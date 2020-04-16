@@ -9,5 +9,5 @@ data class SavedPerson(
     @PrimaryKey val name: String,
     val birthday: String,
     val gender: Boolean,
-    val country: Country
+    val country: String
 )

@@ -8,7 +8,7 @@ import ru.ruslan.life_expectancy.Model.SavedPerson
 interface PersonDao {
 
     @Query("SELECT * from persons")
-    fun getNames() : List<LiveData<SavedPerson>>
+    fun getNames() : LiveData<List<SavedPerson>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(savedPerson: SavedPerson)

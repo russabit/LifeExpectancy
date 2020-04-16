@@ -18,7 +18,6 @@ import timber.log.Timber
 
 class SavedFragment : Fragment(), SavedPersonAdapter.OnViewListener {
     private lateinit var listener: OnNextFragment
-    private lateinit var listOfPersons: List<SavedPerson>
     private lateinit var adapter: SavedPersonAdapter
     private val viewModel: SharedViewModel by activityViewModels()
 
@@ -30,15 +29,23 @@ class SavedFragment : Fragment(), SavedPersonAdapter.OnViewListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel.getSavedPersons().observe(viewLifecycleOwner, Observer { t ->
+        return inflater.inflate(R.layout.fragment_saved, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        adapter = SavedPersonAdapter(this)
+        recyclerview_savedpersons.adapter = adapter
+        recyclerview_savedpersons.layoutManager = LinearLayoutManager(this.context)
+/*        viewModel.getSavedPersons().observe(viewLifecycleOwner, Observer { t ->
             listOfPersons = t
             Timber.d("t is $t")
-            val recyclerView = recyclerview_savedpersons
-            adapter = SavedPersonAdapter(listOfPersons, this)
-            recyclerView.layoutManager = LinearLayoutManager(activity)
-            recyclerView.adapter = adapter
+        })*/
+
+        viewModel.allPersons.observe(viewLifecycleOwner, Observer { person ->
+            // Update the cached copy of the words in the adapter.
+            person?.let { adapter.setPersons(it) }
         })
-        return inflater.inflate(R.layout.fragment_saved, container, false)
     }
 
     override fun onAttach(context: Context) {
