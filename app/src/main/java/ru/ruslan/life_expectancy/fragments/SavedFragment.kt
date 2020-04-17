@@ -8,13 +8,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_saved.*
 import ru.ruslan.life_expectancy.Model.SavedPerson
 import ru.ruslan.life_expectancy.Model.SharedViewModel
 import ru.ruslan.life_expectancy.R
 import ru.ruslan.life_expectancy.adapters.SavedPersonAdapter
-import timber.log.Timber
+
 
 class SavedFragment : Fragment(), SavedPersonAdapter.OnViewListener {
     private lateinit var listener: OnNextFragment
@@ -38,6 +40,8 @@ class SavedFragment : Fragment(), SavedPersonAdapter.OnViewListener {
         recyclerview_savedpersons.adapter = adapter
         recyclerview_savedpersons.layoutManager = LinearLayoutManager(this.context)
 
+        ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerview_savedpersons)
+
         viewModel.allPersons.observe(viewLifecycleOwner, Observer { person ->
             // Update the cached copy of the words in the adapter.
             person?.let { adapter.setPersons(it) }
@@ -59,5 +63,25 @@ class SavedFragment : Fragment(), SavedPersonAdapter.OnViewListener {
         listener.onNextFragment(AllFragmentNames.SAVEDRESULTS)
         val personToSave = adapter.persons[position]
         viewModel.setSavedPerson(personToSave)
+    }
+
+    private val itemTouchHelperCallback: ItemTouchHelper.SimpleCallback =
+        object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                deletePerson(adapter.persons[viewHolder.adapterPosition])
+            }
+        }
+
+    private fun deletePerson(person: SavedPerson) {
+        viewModel.delete(person)
+        adapter.notifyDataSetChanged()
     }
 }

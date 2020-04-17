@@ -30,6 +30,10 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         repository.insert(person)
     }
 
+    fun delete(person: SavedPerson) = viewModelScope.launch(Dispatchers.IO) {
+        repository.delete(person)
+    }
+
     val countriesList: ArrayList<Country> = CountriesListCreator.getCountriesList()
 
     private var selectedGender = MutableLiveData<Boolean>()
