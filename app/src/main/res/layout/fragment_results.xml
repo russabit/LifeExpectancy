@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ResultsFragment">
 
     <TextView
@@ -11,45 +11,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="COUNTRY"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/results_gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="GENDER"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/results_country"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/results_country" />
 
     <TextView
         android:id="@+id/results_age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="AGE"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/results_gender"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/results_gender" />
 
     <TextView
         android:id="@+id/results_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="days lived"
-        app:layout_constraintTop_toBottomOf="@+id/results_age"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/results_age" />
 
     <TextView
         android:id="@+id/results_years_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="years left"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/results_text" />
 
     <TextView
@@ -57,8 +56,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="days left"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/results_years_left" />
 
     <TextView
@@ -66,8 +65,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="date of death"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/results_days_left" />
 
     <TextView
@@ -75,8 +74,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="to save this as person:"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/results_date_of_death" />
 
     <EditText
@@ -84,17 +83,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="type name here and press"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/to_save" />
 
     <Button
         android:id="@+id/save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/edit_text_name"
+        android:text="save"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/to_save"
-        android:text="save"/>
+        app:layout_constraintStart_toEndOf="@+id/edit_text_name"
+        app:layout_constraintTop_toBottomOf="@+id/to_save" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

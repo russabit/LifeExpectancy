@@ -37,6 +37,11 @@ abstract class PersonRoomDatabase : RoomDatabase() {
                     person = SavedPerson("Alla", "29.04.1962", false, "Russia")
                     personDao.insert(person)
 
+                    for (i in 1..10) {
+                        person = SavedPerson("Alla$i", "29.04.1962", false, "Russia")
+                        personDao.insert(person)
+                    }
+
                 }
             }
         }
