@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(), OnNextFragment {
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.fragment_container, fragmentFactory(AllFragmentNames.WELCOME))
+                .add(R.id.fragment_container, fragmentFactory(AllFragmentNames.GENDER))
                 .commit()
         }
 
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity(), OnNextFragment {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.faq -> {
-                    onNextFragment(AllFragmentNames.FAQ)
+                    onNextFragment(AllFragmentNames.WELCOME)
                     return@setOnNavigationItemSelectedListener true
                 }
             }

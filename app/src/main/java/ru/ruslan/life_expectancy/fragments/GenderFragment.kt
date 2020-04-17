@@ -42,6 +42,9 @@ class GenderFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
+
+        button_else.visibility = View.GONE
+
         button_female.setOnClickListener {
             viewModel.setGender(false)
             listener.onNextFragment(AllFragmentNames.AGE)

@@ -15,7 +15,7 @@ class SavedPersonAdapter(
 ) :
     RecyclerView.Adapter<SavedPersonAdapter.ViewHolder>() {
 
-    private var persons = emptyList<SavedPerson>()
+    var persons = emptyList<SavedPerson>()
 
     inner class ViewHolder(itemView: View, var onViewListener: OnViewListener) :
         RecyclerView.ViewHolder(itemView), View.OnClickListener {

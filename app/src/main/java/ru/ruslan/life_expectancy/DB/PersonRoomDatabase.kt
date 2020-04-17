@@ -25,13 +25,17 @@ abstract class PersonRoomDatabase : RoomDatabase() {
                     var personDao = database.personDao()
 
                     // Delete all content here.
-                    personDao.deleteAll()
+                    //personDao.deleteAll()
 
-                    // Add sample words.
+                    // Add sample persons.
                     var person = SavedPerson("Ruslan", "14.10.1994", true, "Russia")
                     personDao.insert(person)
 
                     person = SavedPerson("Sophie", "21.05.1994", false, "New Zealand")
+                    personDao.insert(person)
+
+                    person = SavedPerson("Alla", "29.04.1962", false, "Russia")
+                    personDao.insert(person)
 
                 }
             }
@@ -54,7 +58,8 @@ abstract class PersonRoomDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     PersonRoomDatabase::class.java,
-                    "persons")
+                    "persons"
+                )
                     .addCallback(PersonDatabaseCallback(scope))
                     .build()
                 INSTANCE = instance

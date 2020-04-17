@@ -11,11 +11,12 @@ fun fragmentFactory(fragmentName: AllFragmentNames): Fragment {
         AllFragmentNames.WELCOME -> WelcomeFragment.newInstance()
         AllFragmentNames.SAVED -> SavedFragment.newInstance()
         AllFragmentNames.FAQ -> FaqFragment.newInstance()
+        AllFragmentNames.SAVEDRESULTS -> SavedResultsFragment.newInstance()
     }
 }
 
 enum class AllFragmentNames {
-    GENDER, AGE, COUNTRY, RESULT, WELCOME, SAVED, FAQ
+    GENDER, AGE, COUNTRY, RESULT, WELCOME, SAVED, FAQ, SAVEDRESULTS
 }
 
 interface OnNextFragment {

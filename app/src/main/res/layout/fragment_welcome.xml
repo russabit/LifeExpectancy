@@ -8,7 +8,7 @@
         android:id="@+id/welcome_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="this is a life expectancy app, which allows you to compute how many days you have already lived, how many days you are expected to live based on your gender and country and to maybe change your perspective at how you see and count days. you can save your results as separate persons and to set up the notifications"
+        android:text="this is a life expectancy app, which allows you to compute how many days you have already lived, how many days you are expected to live based on your gender and country and to maybe change your perspective at how you see and count days. you can save your results as separate persons and set up the notifications"
         android:textSize="20dp"
         android:textAlignment="center"
         app:layout_constraintTop_toTopOf="parent"

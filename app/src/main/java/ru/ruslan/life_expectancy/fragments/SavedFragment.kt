@@ -37,10 +37,6 @@ class SavedFragment : Fragment(), SavedPersonAdapter.OnViewListener {
         adapter = SavedPersonAdapter(this)
         recyclerview_savedpersons.adapter = adapter
         recyclerview_savedpersons.layoutManager = LinearLayoutManager(this.context)
-/*        viewModel.getSavedPersons().observe(viewLifecycleOwner, Observer { t ->
-            listOfPersons = t
-            Timber.d("t is $t")
-        })*/
 
         viewModel.allPersons.observe(viewLifecycleOwner, Observer { person ->
             // Update the cached copy of the words in the adapter.
@@ -60,6 +56,8 @@ class SavedFragment : Fragment(), SavedPersonAdapter.OnViewListener {
     }
 
     override fun onViewClick(position: Int) {
-        listener.onNextFragment(AllFragmentNames.RESULT)
+        listener.onNextFragment(AllFragmentNames.SAVEDRESULTS)
+        val personToSave = adapter.persons[position]
+        viewModel.setSavedPerson(personToSave)
     }
 }
