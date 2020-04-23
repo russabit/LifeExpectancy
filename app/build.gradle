@@ -29,6 +29,10 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+    repositories {
+        jcenter()
+    }
 }
 
 dependencies {
@@ -67,13 +71,21 @@ dependencies {
     implementation "com.jakewharton.timber:timber:4.7.1"
 
     //Date and time
-    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.2'
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.3'
 
     // Room components
     implementation "androidx.room:room-runtime:2.2.5"
     kapt "androidx.room:room-compiler:2.2.5"
     androidTestImplementation "androidx.room:room-testing:2.2.5"
     implementation "androidx.room:room-ktx:2.2.5"
+
+
+    // Koin for Android
+    implementation "org.koin:koin-android:2.1.5"
+    // or Koin for Lifecycle scoping
+    implementation "org.koin:koin-android-scope:2.1.5"
+    // or Koin for Android Architecture ViewModel
+    implementation "org.koin:koin-android-viewmodel:2.1.5"
 }
 
 

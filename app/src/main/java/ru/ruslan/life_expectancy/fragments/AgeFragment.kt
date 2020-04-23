@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import kotlinx.android.synthetic.main.fragment_age.*
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 import ru.ruslan.life_expectancy.Model.SharedViewModel
 
 import ru.ruslan.life_expectancy.R
@@ -17,7 +17,7 @@ class AgeFragment : Fragment() {
 
     private lateinit var listener: OnNextFragment
 
-    private val viewModel: SharedViewModel by activityViewModels()
+    private val viewModel: SharedViewModel by sharedViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

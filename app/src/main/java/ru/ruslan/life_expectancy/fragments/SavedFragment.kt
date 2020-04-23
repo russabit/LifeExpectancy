@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_saved.*
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 import ru.ruslan.life_expectancy.Model.SavedPersonEntity
 import ru.ruslan.life_expectancy.Model.SharedViewModel
 import ru.ruslan.life_expectancy.R
@@ -21,7 +22,7 @@ import ru.ruslan.life_expectancy.adapters.SavedPersonAdapter
 class SavedFragment : Fragment(), SavedPersonAdapter.OnViewListener {
     private lateinit var listener: OnNextFragment
     private lateinit var adapter: SavedPersonAdapter
-    private val viewModel: SharedViewModel by activityViewModels()
+    private val viewModel: SharedViewModel by sharedViewModel()
 
     companion object {
         fun newInstance() = SavedFragment()

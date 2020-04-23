@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_results.*
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.temporal.ChronoUnit
@@ -23,7 +24,7 @@ class SavedResultsFragment : Fragment() {
         fun newInstance() = SavedResultsFragment()
     }
 
-    private val viewModel: SharedViewModel by activityViewModels()
+    private val viewModel: SharedViewModel by sharedViewModel()
     private var birthDate: String = ""
     private var gender: Boolean = false
     private var country: Country = Country(1)

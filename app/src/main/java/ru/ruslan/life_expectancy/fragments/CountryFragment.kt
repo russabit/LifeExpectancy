@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import kotlinx.android.synthetic.main.fragment_country.*
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 import ru.ruslan.life_expectancy.Model.SharedViewModel
 import ru.ruslan.life_expectancy.R
 import ru.ruslan.life_expectancy.adapters.CountriesRecyclerAdapter
@@ -22,7 +23,7 @@ class CountryFragment : Fragment(), CountriesRecyclerAdapter.OnViewListener {
 
     lateinit var adapter: CountriesRecyclerAdapter
     private lateinit var listener: OnNextFragment
-    private val viewModel: SharedViewModel by activityViewModels()
+    private val viewModel: SharedViewModel by sharedViewModel()
     private lateinit var countriesList: ArrayList<Country>
 
     companion object {
