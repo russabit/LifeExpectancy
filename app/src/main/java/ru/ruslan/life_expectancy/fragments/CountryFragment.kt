@@ -71,15 +71,12 @@ class CountryFragment : Fragment(), CountriesRecyclerAdapter.OnViewListener {
     }
 
     fun filterByTypingTheName(text: String) {
-
-        val filteredCountriesList = ArrayList<Country>()
-
-        for (eachCountry in countriesList) {
-            if (eachCountry.countryName.contains(text, true)) {
-                filteredCountriesList.add(eachCountry)
-            }
-        }
-        adapter.filterList(filteredCountriesList)
+        adapter.filterList(countriesList.filter {
+            it.countryName.contains(
+                text,
+                true
+            )
+        } as ArrayList<Country>)
     }
 
     override fun onAttach(context: Context) {

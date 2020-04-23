@@ -2,8 +2,8 @@ package ru.ruslan.life_expectancy.utils
 
 class CountriesListCreator {
     companion object {
-        fun <ArrayList> getCountriesList(): ArrayList {
-            var countriesList = ArrayList<Country>()
+        fun getCountriesList(): ArrayList<Country> {
+            val countriesList = ArrayList<Country>()
 
             countriesList.add(Country(1, "Hong Kong", 84.7, 87.6, 81.8))
             countriesList.add(Country(2, "Japan", 84.5, 87.5, 81.1))
@@ -198,7 +198,7 @@ class CountriesListCreator {
             countriesList.add(Country(184, "Chad", 54.0, 55.4, 52.6))
             countriesList.add(Country(185, "Lesotho", 53.7, 57.0, 50.6))
             countriesList.add(Country(186, "Central African Republic", 52.8, 55.0, 50.6))
-            return countriesList as ArrayList
+            return countriesList
         }
     }
 }
