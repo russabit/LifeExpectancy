@@ -16,7 +16,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     // - We can put an observer on the data (instead of polling for changes) and only update the
     //   the UI when the data actually changes.
     // - Repository is completely separated from the UI through the ViewModel.
-    val allPersons:LiveData<List<SavedPerson>>
+    val allPersons:LiveData<List<SavedPersonEntity>>
     init {
         val personDao = PersonRoomDatabase.getDatabase(getApplication(), viewModelScope).personDao()
         repository = PersonRepository(personDao)
@@ -26,12 +26,12 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     /**
      * Launching a new coroutine to insert the data in a non-blocking way
      */
-    fun insert(person: SavedPerson) = viewModelScope.launch(Dispatchers.IO) {
-        repository.insert(person)
+    fun insert(personEntity: SavedPersonEntity) = viewModelScope.launch(Dispatchers.IO) {
+        repository.insert(personEntity)
     }
 
-    fun delete(person: SavedPerson) = viewModelScope.launch(Dispatchers.IO) {
-        repository.delete(person)
+    fun delete(personEntity: SavedPersonEntity) = viewModelScope.launch(Dispatchers.IO) {
+        repository.delete(personEntity)
     }
 
     val countriesList: ArrayList<Country> = CountriesListCreator.getCountriesList()
@@ -39,7 +39,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     private var selectedGender = MutableLiveData<Boolean>()
     private var selectedCountry = MutableLiveData<Country>()
     private var selectedDateOfBirth = MutableLiveData<Any>()
-    private var savedPerson = MutableLiveData<SavedPerson>()
+    private var savedPerson = MutableLiveData<SavedPersonEntity>()
 
     //true - male, false - female
     fun setGender(gender: Boolean) {
@@ -66,11 +66,11 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
         return selectedDateOfBirth
     }
 
-    fun setSavedPerson(savedPerson: SavedPerson) {
-        this.savedPerson.value = savedPerson
+    fun setSavedPerson(savedPersonEntity: SavedPersonEntity) {
+        this.savedPerson.value = savedPersonEntity
     }
 
-    fun getSavedPerson(): MutableLiveData<SavedPerson> {
+    fun getSavedPerson(): MutableLiveData<SavedPersonEntity> {
         return savedPerson
     }
 

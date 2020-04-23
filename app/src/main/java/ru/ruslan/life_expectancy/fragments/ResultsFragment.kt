@@ -12,12 +12,11 @@ import kotlinx.android.synthetic.main.fragment_results.*
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.temporal.ChronoUnit
-import ru.ruslan.life_expectancy.Model.SavedPerson
+import ru.ruslan.life_expectancy.Model.SavedPersonEntity
 import ru.ruslan.life_expectancy.Model.SharedViewModel
 
 import ru.ruslan.life_expectancy.R
 import ru.ruslan.life_expectancy.utils.Country
-import timber.log.Timber
 import kotlin.math.roundToLong
 
 class ResultsFragment : Fragment() {
@@ -79,7 +78,7 @@ class ResultsFragment : Fragment() {
 
         save_button.setOnClickListener {
             viewModel.insert(
-                SavedPerson(
+                SavedPersonEntity(
                     edit_text_name.text.toString(),
                     birthDate,
                     gender,

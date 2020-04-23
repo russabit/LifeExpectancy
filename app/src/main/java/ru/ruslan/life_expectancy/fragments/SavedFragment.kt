@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_saved.*
-import ru.ruslan.life_expectancy.Model.SavedPerson
+import ru.ruslan.life_expectancy.Model.SavedPersonEntity
 import ru.ruslan.life_expectancy.Model.SharedViewModel
 import ru.ruslan.life_expectancy.R
 import ru.ruslan.life_expectancy.adapters.SavedPersonAdapter
@@ -80,8 +80,8 @@ class SavedFragment : Fragment(), SavedPersonAdapter.OnViewListener {
             }
         }
 
-    private fun deletePerson(person: SavedPerson) {
-        viewModel.delete(person)
+    private fun deletePerson(personEntity: SavedPersonEntity) {
+        viewModel.delete(personEntity)
         adapter.notifyDataSetChanged()
     }
 }

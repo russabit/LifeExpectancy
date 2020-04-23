@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import ru.ruslan.life_expectancy.utils.Country
 
 @Entity(tableName = "persons")
-data class SavedPerson(
+data class SavedPersonEntity(
     @PrimaryKey val name: String,
     val birthday: String,
     val gender: Boolean,

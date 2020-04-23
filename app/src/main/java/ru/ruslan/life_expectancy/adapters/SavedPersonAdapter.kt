@@ -6,7 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.rv_listitem_savedperson.view.*
-import ru.ruslan.life_expectancy.Model.SavedPerson
+import ru.ruslan.life_expectancy.Model.SavedPersonEntity
 import ru.ruslan.life_expectancy.R
 import timber.log.Timber
 
@@ -15,7 +15,7 @@ class SavedPersonAdapter(
 ) :
     RecyclerView.Adapter<SavedPersonAdapter.ViewHolder>() {
 
-    var persons = emptyList<SavedPerson>()
+    var persons = emptyList<SavedPersonEntity>()
 
     inner class ViewHolder(itemView: View, var onViewListener: OnViewListener) :
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
@@ -33,8 +33,8 @@ class SavedPersonAdapter(
         }
     }
 
-    internal fun setPersons(persons: List<SavedPerson>) {
-        this.persons = persons
+    internal fun setPersons(personEntities: List<SavedPersonEntity>) {
+        this.persons = personEntities
         notifyDataSetChanged()
     }
 

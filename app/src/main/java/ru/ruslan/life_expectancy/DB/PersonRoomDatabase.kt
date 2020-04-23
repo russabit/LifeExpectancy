@@ -7,9 +7,9 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import ru.ruslan.life_expectancy.Model.SavedPerson
+import ru.ruslan.life_expectancy.Model.SavedPersonEntity
 
-@Database(entities = [SavedPerson::class], version = 1, exportSchema = false)
+@Database(entities = [SavedPersonEntity::class], version = 1, exportSchema = false)
 abstract class PersonRoomDatabase : RoomDatabase() {
 
     abstract fun personDao(): PersonDao
@@ -28,17 +28,17 @@ abstract class PersonRoomDatabase : RoomDatabase() {
                     //personDao.deleteAll()
 
                     // Add sample persons.
-                    var person = SavedPerson("Ruslan", "14.10.1994", true, "Russia")
+                    var person = SavedPersonEntity("Ruslan", "14.10.1994", true, "Russia")
                     personDao.insert(person)
 
-                    person = SavedPerson("Sophie", "21.05.1994", false, "New Zealand")
+                    person = SavedPersonEntity("Sophie", "21.05.1994", false, "New Zealand")
                     personDao.insert(person)
 
-                    person = SavedPerson("Alla", "29.04.1962", false, "Russia")
+                    person = SavedPersonEntity("Alla", "29.04.1962", false, "Russia")
                     personDao.insert(person)
 
                     for (i in 1..10) {
-                        person = SavedPerson("Alla$i", "29.04.1962", false, "Russia")
+                        person = SavedPersonEntity("Alla$i", "29.04.1962", false, "Russia")
                         personDao.insert(person)
                     }
 
