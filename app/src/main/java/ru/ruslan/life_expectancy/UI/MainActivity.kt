@@ -1,9 +1,9 @@
-package ru.ruslan.life_expectancy
+package ru.ruslan.life_expectancy.UI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
-import ru.ruslan.life_expectancy.fragments.*
+import ru.ruslan.life_expectancy.R
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity(), OnNextFragment {

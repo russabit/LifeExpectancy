@@ -13,7 +13,9 @@ import ru.ruslan.life_expectancy.Model.SavedPersonEntity
 abstract class PersonRoomDatabase : RoomDatabase() {
 
     abstract fun personDao(): PersonDao
+}
 
+/*
     private class PersonDatabaseCallback(
         private val scope: CoroutineScope
     ) : RoomDatabase.Callback() {
@@ -46,30 +48,4 @@ abstract class PersonRoomDatabase : RoomDatabase() {
             }
         }
     }
-
-    companion object {
-
-        @Volatile
-        private var INSTANCE: PersonRoomDatabase? = null
-
-        fun getDatabase(
-            context: Context,
-            scope: CoroutineScope
-        ): PersonRoomDatabase {
-            val tempInstance = INSTANCE
-            if (tempInstance != null)
-                return tempInstance
-            synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    PersonRoomDatabase::class.java,
-                    "persons"
-                )
-                    .addCallback(PersonDatabaseCallback(scope))
-                    .build()
-                INSTANCE = instance
-                return instance
-            }
-        }
-    }
-}
+*/

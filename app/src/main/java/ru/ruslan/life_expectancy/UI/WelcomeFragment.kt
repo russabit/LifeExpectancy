@@ -1,12 +1,10 @@
-package ru.ruslan.life_expectancy.fragments
+package ru.ruslan.life_expectancy.UI
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_main.*
 import ru.ruslan.life_expectancy.R
 
 class WelcomeFragment : Fragment() {

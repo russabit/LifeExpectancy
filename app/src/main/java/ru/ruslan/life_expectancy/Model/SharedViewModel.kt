@@ -4,24 +4,17 @@ import android.app.Application
 import androidx.lifecycle.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import ru.ruslan.life_expectancy.DB.PersonRoomDatabase
-import ru.ruslan.life_expectancy.PersonRepository
+import ru.ruslan.life_expectancy.DB.PersonRepository
 import ru.ruslan.life_expectancy.utils.CountriesListCreator
 import ru.ruslan.life_expectancy.utils.Country
 
-class SharedViewModel(application: Application) : AndroidViewModel(application) {
+class SharedViewModel(private val repository: PersonRepository, application: Application) : AndroidViewModel(application) {
 
-    private val repository: PersonRepository
     // Using LiveData and caching what getAlphabetizedWords returns has several benefits:
     // - We can put an observer on the data (instead of polling for changes) and only update the
     //   the UI when the data actually changes.
     // - Repository is completely separated from the UI through the ViewModel.
-    val allPersons:LiveData<List<SavedPersonEntity>>
-    init {
-        val personDao = PersonRoomDatabase.getDatabase(getApplication(), viewModelScope).personDao()
-        repository = PersonRepository(personDao)
-        allPersons = repository.allPersons
-    }
+    val allPersons:LiveData<List<SavedPersonEntity>> = repository.allPersons
 
     /**
      * Launching a new coroutine to insert the data in a non-blocking way

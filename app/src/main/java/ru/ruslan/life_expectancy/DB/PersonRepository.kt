@@ -1,4 +1,4 @@
-package ru.ruslan.life_expectancy
+package ru.ruslan.life_expectancy.DB
 
 import androidx.lifecycle.LiveData
 import ru.ruslan.life_expectancy.DB.PersonDao
