@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(), OnNextFragment {
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.fragment_container, fragmentFactory(AllFragmentNames.GENDER))
+                .add(R.id.fragment_container, fragmentFactory(AllFragmentNames.SAVED))
                 .commit()
         }
 

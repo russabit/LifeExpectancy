@@ -6,7 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ru.ruslan.life_expectancy.Data.PersonRepository
 import ru.ruslan.life_expectancy.Domain.SavedPersonEntity
-import ru.ruslan.life_expectancy.Domain.CountriesListCreator
+import ru.ruslan.life_expectancy.Data.CountriesListCreator
 import ru.ruslan.life_expectancy.Domain.Country
 
 class SharedViewModel(private val repository: PersonRepository, application: Application) :

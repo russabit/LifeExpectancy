@@ -49,6 +49,8 @@ class SavedFragment : Fragment(), SavedPersonAdapter.OnViewListener {
             // Update the cached copy of the words in the adapter.
             person?.let { adapter.setPersons(it) }
         })
+
+        fab.setOnClickListener { listener.onNextFragment(AllFragmentNames.GENDER) }
     }
 
     override fun onAttach(context: Context) {
