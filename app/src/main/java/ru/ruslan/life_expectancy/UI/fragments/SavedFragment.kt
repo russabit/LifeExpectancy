@@ -1,4 +1,4 @@
-package ru.ruslan.life_expectancy.UI
+package ru.ruslan.life_expectancy.UI.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -12,10 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_saved.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
-import ru.ruslan.life_expectancy.Model.SavedPersonEntity
-import ru.ruslan.life_expectancy.Model.SharedViewModel
+import ru.ruslan.life_expectancy.Domain.SavedPersonEntity
+import ru.ruslan.life_expectancy.UI.SharedViewModel
 import ru.ruslan.life_expectancy.R
-import ru.ruslan.life_expectancy.adapters.SavedPersonAdapter
+import ru.ruslan.life_expectancy.UI.AllFragmentNames
+import ru.ruslan.life_expectancy.UI.OnNextFragment
+import ru.ruslan.life_expectancy.UI.adapters.SavedPersonAdapter
 
 
 class SavedFragment : Fragment(), SavedPersonAdapter.OnViewListener {
@@ -24,7 +26,8 @@ class SavedFragment : Fragment(), SavedPersonAdapter.OnViewListener {
     private val viewModel: SharedViewModel by sharedViewModel()
 
     companion object {
-        fun newInstance() = SavedFragment()
+        fun newInstance() =
+            SavedFragment()
     }
 
     override fun onCreateView(

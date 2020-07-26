@@ -1,8 +1,7 @@
-package ru.ruslan.life_expectancy.DB
+package ru.ruslan.life_expectancy.Data
 
 import androidx.lifecycle.LiveData
-import ru.ruslan.life_expectancy.DB.PersonDao
-import ru.ruslan.life_expectancy.Model.SavedPersonEntity
+import ru.ruslan.life_expectancy.Domain.SavedPersonEntity
 
 // Declares the DAO as a private property in the constructor. Pass in the DAO
 // instead of the whole database, because you only need access to the DAO

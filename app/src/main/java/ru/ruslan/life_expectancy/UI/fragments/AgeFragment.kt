@@ -1,4 +1,4 @@
-package ru.ruslan.life_expectancy.UI
+package ru.ruslan.life_expectancy.UI.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -8,10 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_age.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
-import ru.ruslan.life_expectancy.Model.SharedViewModel
+import ru.ruslan.life_expectancy.UI.SharedViewModel
 
 import ru.ruslan.life_expectancy.R
-import timber.log.Timber
+import ru.ruslan.life_expectancy.UI.AllFragmentNames
+import ru.ruslan.life_expectancy.UI.OnNextFragment
 
 class AgeFragment : Fragment() {
 
@@ -37,7 +38,6 @@ class AgeFragment : Fragment() {
 
         next_button.setOnClickListener {
             viewModel.setDateOfBirth("${datePicker.dayOfMonth}.${datePicker.month + 1}.${datePicker.year}")
-            Timber.d("${datePicker.dayOfMonth}/${datePicker.month}/${datePicker.year}")
             listener.onNextFragment(AllFragmentNames.COUNTRY)
         }
     }

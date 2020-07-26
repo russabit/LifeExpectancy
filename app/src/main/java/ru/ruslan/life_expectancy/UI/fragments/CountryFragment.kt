@@ -1,4 +1,4 @@
-package ru.ruslan.life_expectancy.UI
+package ru.ruslan.life_expectancy.UI.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -13,10 +13,12 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import kotlinx.android.synthetic.main.fragment_country.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
-import ru.ruslan.life_expectancy.Model.SharedViewModel
+import ru.ruslan.life_expectancy.UI.SharedViewModel
 import ru.ruslan.life_expectancy.R
-import ru.ruslan.life_expectancy.adapters.CountriesRecyclerAdapter
-import ru.ruslan.life_expectancy.utils.Country
+import ru.ruslan.life_expectancy.UI.AllFragmentNames
+import ru.ruslan.life_expectancy.UI.OnNextFragment
+import ru.ruslan.life_expectancy.UI.adapters.CountriesRecyclerAdapter
+import ru.ruslan.life_expectancy.Domain.Country
 
 class CountryFragment : Fragment(), CountriesRecyclerAdapter.OnViewListener {
 
@@ -26,7 +28,8 @@ class CountryFragment : Fragment(), CountriesRecyclerAdapter.OnViewListener {
     private lateinit var countriesList: ArrayList<Country>
 
     companion object {
-        fun newInstance() = CountryFragment()
+        fun newInstance() =
+            CountryFragment()
     }
 
     override fun onCreateView(

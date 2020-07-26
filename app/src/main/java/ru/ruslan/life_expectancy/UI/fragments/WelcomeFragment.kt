@@ -1,4 +1,4 @@
-package ru.ruslan.life_expectancy.UI
+package ru.ruslan.life_expectancy.UI.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,8 @@ import ru.ruslan.life_expectancy.R
 class WelcomeFragment : Fragment() {
 
     companion object {
-        fun newInstance() = WelcomeFragment()
+        fun newInstance() =
+            WelcomeFragment()
     }
 
 

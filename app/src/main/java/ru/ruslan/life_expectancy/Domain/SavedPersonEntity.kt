@@ -1,8 +1,7 @@
-package ru.ruslan.life_expectancy.Model
+package ru.ruslan.life_expectancy.Domain
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import ru.ruslan.life_expectancy.utils.Country
 
 @Entity(tableName = "persons")
 data class SavedPersonEntity(

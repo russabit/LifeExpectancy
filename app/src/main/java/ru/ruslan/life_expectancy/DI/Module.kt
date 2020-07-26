@@ -6,9 +6,9 @@ import kotlinx.coroutines.Dispatchers
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import ru.ruslan.life_expectancy.DB.PersonRoomDatabase
-import ru.ruslan.life_expectancy.Model.SharedViewModel
-import ru.ruslan.life_expectancy.DB.PersonRepository
+import ru.ruslan.life_expectancy.Data.PersonRoomDatabase
+import ru.ruslan.life_expectancy.UI.SharedViewModel
+import ru.ruslan.life_expectancy.Data.PersonRepository
 
 val roomModule = module {
     single {
@@ -28,5 +28,10 @@ val roomModule = module {
 }
 
 val viewModelModule = module {
-    viewModel { SharedViewModel(get(), androidApplication()) }
+    viewModel {
+        SharedViewModel(
+            get(),
+            androidApplication()
+        )
+    }
 }

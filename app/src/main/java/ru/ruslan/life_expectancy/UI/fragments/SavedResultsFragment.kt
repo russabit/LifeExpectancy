@@ -1,4 +1,4 @@
-package ru.ruslan.life_expectancy.UI
+package ru.ruslan.life_expectancy.UI.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,22 +11,24 @@ import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.temporal.ChronoUnit
-import ru.ruslan.life_expectancy.Model.SharedViewModel
+import ru.ruslan.life_expectancy.UI.SharedViewModel
 
 import ru.ruslan.life_expectancy.R
-import ru.ruslan.life_expectancy.utils.Country
+import ru.ruslan.life_expectancy.Domain.Country
 import kotlin.math.roundToLong
 
 class SavedResultsFragment : Fragment() {
 
     companion object {
-        fun newInstance() = SavedResultsFragment()
+        fun newInstance() =
+            SavedResultsFragment()
     }
 
     private val viewModel: SharedViewModel by sharedViewModel()
     private var birthDate: String = ""
     private var gender: Boolean = false
-    private var country: Country = Country(1)
+    private var country: Country =
+        Country(1)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

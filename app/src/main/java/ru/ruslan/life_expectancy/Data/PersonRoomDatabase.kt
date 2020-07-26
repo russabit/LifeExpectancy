@@ -1,13 +1,8 @@
-package ru.ruslan.life_expectancy.DB
+package ru.ruslan.life_expectancy.Data
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
-import ru.ruslan.life_expectancy.Model.SavedPersonEntity
+import ru.ruslan.life_expectancy.Domain.SavedPersonEntity
 
 @Database(entities = [SavedPersonEntity::class], version = 1, exportSchema = false)
 abstract class PersonRoomDatabase : RoomDatabase() {

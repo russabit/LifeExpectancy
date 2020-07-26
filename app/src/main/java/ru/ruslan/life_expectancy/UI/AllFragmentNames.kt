@@ -1,6 +1,7 @@
 package ru.ruslan.life_expectancy.UI
 
 import androidx.fragment.app.Fragment
+import ru.ruslan.life_expectancy.UI.fragments.*
 
 fun fragmentFactory(fragmentName: AllFragmentNames): Fragment {
     return when (fragmentName) {
