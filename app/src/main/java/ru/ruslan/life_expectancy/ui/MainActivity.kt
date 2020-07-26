@@ -1,4 +1,4 @@
-package ru.ruslan.life_expectancy.UI
+package ru.ruslan.life_expectancy.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

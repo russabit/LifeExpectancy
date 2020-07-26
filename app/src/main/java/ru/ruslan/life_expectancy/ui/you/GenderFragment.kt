@@ -1,4 +1,4 @@
-package ru.ruslan.life_expectancy.UI.fragments
+package ru.ruslan.life_expectancy.ui.you
 
 import android.content.Context
 import android.os.Bundle
@@ -8,11 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_gender.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
-import ru.ruslan.life_expectancy.UI.SharedViewModel
 
 import ru.ruslan.life_expectancy.R
-import ru.ruslan.life_expectancy.UI.AllFragmentNames
-import ru.ruslan.life_expectancy.UI.OnNextFragment
+import ru.ruslan.life_expectancy.ui.AllFragmentNames
+import ru.ruslan.life_expectancy.ui.OnNextFragment
+import ru.ruslan.life_expectancy.ui.SharedViewModel
 
 class GenderFragment : Fragment() {
 

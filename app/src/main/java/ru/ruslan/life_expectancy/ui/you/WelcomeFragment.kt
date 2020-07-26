@@ -1,4 +1,4 @@
-package ru.ruslan.life_expectancy.UI.fragments
+package ru.ruslan.life_expectancy.ui.you
 
 import android.os.Bundle
 import android.view.LayoutInflater

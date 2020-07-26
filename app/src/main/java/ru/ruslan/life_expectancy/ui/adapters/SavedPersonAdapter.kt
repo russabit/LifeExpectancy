@@ -1,4 +1,4 @@
-package ru.ruslan.life_expectancy.UI.adapters
+package ru.ruslan.life_expectancy.ui.adapters
 
 import android.view.View
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.rv_listitem_savedperson.view.*
-import ru.ruslan.life_expectancy.Domain.SavedPersonEntity
+import ru.ruslan.life_expectancy.domain.SavedPersonEntity
 import ru.ruslan.life_expectancy.R
 import timber.log.Timber
 

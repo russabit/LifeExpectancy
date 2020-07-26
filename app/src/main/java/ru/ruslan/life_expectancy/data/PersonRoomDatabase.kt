@@ -1,8 +1,8 @@
-package ru.ruslan.life_expectancy.Data
+package ru.ruslan.life_expectancy.data
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import ru.ruslan.life_expectancy.Domain.SavedPersonEntity
+import ru.ruslan.life_expectancy.domain.SavedPersonEntity
 
 @Database(entities = [SavedPersonEntity::class], version = 1, exportSchema = false)
 abstract class PersonRoomDatabase : RoomDatabase() {

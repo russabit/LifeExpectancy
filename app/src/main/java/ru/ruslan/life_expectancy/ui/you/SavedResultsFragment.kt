@@ -1,4 +1,4 @@
-package ru.ruslan.life_expectancy.UI.fragments
+package ru.ruslan.life_expectancy.ui.you
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,10 +11,10 @@ import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.temporal.ChronoUnit
-import ru.ruslan.life_expectancy.UI.SharedViewModel
 
 import ru.ruslan.life_expectancy.R
-import ru.ruslan.life_expectancy.Domain.Country
+import ru.ruslan.life_expectancy.domain.Country
+import ru.ruslan.life_expectancy.ui.SharedViewModel
 import kotlin.math.roundToLong
 
 class SavedResultsFragment : Fragment() {

@@ -1,4 +1,4 @@
-package ru.ruslan.life_expectancy.UI.fragments
+package ru.ruslan.life_expectancy.ui.faq
 
 import androidx.fragment.app.Fragment
 

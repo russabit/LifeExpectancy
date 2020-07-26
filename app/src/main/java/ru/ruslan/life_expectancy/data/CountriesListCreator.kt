@@ -1,6 +1,6 @@
-package ru.ruslan.life_expectancy.Data
+package ru.ruslan.life_expectancy.data
 
-import ru.ruslan.life_expectancy.Domain.Country
+import ru.ruslan.life_expectancy.domain.Country
 
 class CountriesListCreator {
     companion object {

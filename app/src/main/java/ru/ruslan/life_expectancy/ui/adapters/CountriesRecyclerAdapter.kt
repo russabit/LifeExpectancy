@@ -1,4 +1,4 @@
-package ru.ruslan.life_expectancy.UI.adapters
+package ru.ruslan.life_expectancy.ui.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import ru.ruslan.life_expectancy.R
-import ru.ruslan.life_expectancy.Domain.Country
+import ru.ruslan.life_expectancy.domain.Country
 import timber.log.Timber
 
 class CountriesRecyclerAdapter(

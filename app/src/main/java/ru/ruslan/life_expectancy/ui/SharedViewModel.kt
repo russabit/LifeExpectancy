@@ -1,13 +1,13 @@
-package ru.ruslan.life_expectancy.UI
+package ru.ruslan.life_expectancy.ui
 
 import android.app.Application
 import androidx.lifecycle.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import ru.ruslan.life_expectancy.Data.PersonRepository
-import ru.ruslan.life_expectancy.Domain.SavedPersonEntity
-import ru.ruslan.life_expectancy.Data.CountriesListCreator
-import ru.ruslan.life_expectancy.Domain.Country
+import ru.ruslan.life_expectancy.data.PersonRepository
+import ru.ruslan.life_expectancy.domain.SavedPersonEntity
+import ru.ruslan.life_expectancy.data.CountriesListCreator
+import ru.ruslan.life_expectancy.domain.Country
 
 class SharedViewModel(private val repository: PersonRepository, application: Application) :
     AndroidViewModel(application) {

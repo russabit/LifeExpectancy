@@ -1,4 +1,4 @@
-package ru.ruslan.life_expectancy.Domain
+package ru.ruslan.life_expectancy.domain
 
 data class Country(
     val rank: Number,

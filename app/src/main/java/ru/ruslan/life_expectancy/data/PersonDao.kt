@@ -1,8 +1,8 @@
-package ru.ruslan.life_expectancy.Data
+package ru.ruslan.life_expectancy.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import ru.ruslan.life_expectancy.Domain.SavedPersonEntity
+import ru.ruslan.life_expectancy.domain.SavedPersonEntity
 
 @Dao
 interface PersonDao {

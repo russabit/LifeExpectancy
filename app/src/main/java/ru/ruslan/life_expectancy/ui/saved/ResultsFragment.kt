@@ -1,4 +1,4 @@
-package ru.ruslan.life_expectancy.UI.fragments
+package ru.ruslan.life_expectancy.ui.saved
 
 import android.content.Context
 import android.os.Bundle
@@ -12,13 +12,13 @@ import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.temporal.ChronoUnit
-import ru.ruslan.life_expectancy.Domain.SavedPersonEntity
-import ru.ruslan.life_expectancy.UI.SharedViewModel
+import ru.ruslan.life_expectancy.domain.SavedPersonEntity
+import ru.ruslan.life_expectancy.ui.SharedViewModel
 
 import ru.ruslan.life_expectancy.R
-import ru.ruslan.life_expectancy.UI.AllFragmentNames
-import ru.ruslan.life_expectancy.UI.OnNextFragment
-import ru.ruslan.life_expectancy.Domain.Country
+import ru.ruslan.life_expectancy.ui.AllFragmentNames
+import ru.ruslan.life_expectancy.ui.OnNextFragment
+import ru.ruslan.life_expectancy.domain.Country
 import kotlin.math.roundToLong
 
 class ResultsFragment : Fragment() {
