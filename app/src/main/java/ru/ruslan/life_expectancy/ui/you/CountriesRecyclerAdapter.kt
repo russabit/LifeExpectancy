@@ -1,4 +1,4 @@
-package ru.ruslan.life_expectancy.ui.adapters
+package ru.ruslan.life_expectancy.ui.you
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -20,7 +20,10 @@ class CountriesRecyclerAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflatedView = parent.inflate(R.layout.rv_listitem_country, false)
-        return ViewHolder(inflatedView, mOnViewListener)
+        return ViewHolder(
+            inflatedView,
+            mOnViewListener
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -31,7 +34,7 @@ class CountriesRecyclerAdapter(
 
     //to get data to search Category
     fun filterList(filteredCountriesList: ArrayList<Country>) {
-        this.countries = filteredCountriesList;
+        this.countries = filteredCountriesList
         notifyDataSetChanged()
     }
 

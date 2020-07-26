@@ -17,7 +17,6 @@ import ru.ruslan.life_expectancy.ui.SharedViewModel
 import ru.ruslan.life_expectancy.R
 import ru.ruslan.life_expectancy.ui.AllFragmentNames
 import ru.ruslan.life_expectancy.ui.OnNextFragment
-import ru.ruslan.life_expectancy.ui.adapters.SavedPersonAdapter
 
 
 class SavedFragment : Fragment(), SavedPersonAdapter.OnViewListener {
