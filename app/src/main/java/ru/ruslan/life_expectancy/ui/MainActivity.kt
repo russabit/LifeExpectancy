@@ -24,15 +24,15 @@ class MainActivity : AppCompatActivity(), OnNextFragment {
         navigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.new_person -> {
-                    onNextFragment(AllFragmentNames.GENDER)
+                    onNextFragment(AllFragmentNames.GENDER, true)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.list_of_saved_persons -> {
-                    onNextFragment(AllFragmentNames.SAVED)
+                    onNextFragment(AllFragmentNames.SAVED, true)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.faq -> {
-                    onNextFragment(AllFragmentNames.WELCOME)
+                    onNextFragment(AllFragmentNames.WELCOME, true)
                     return@setOnNavigationItemSelectedListener true
                 }
             }
@@ -49,4 +49,13 @@ class MainActivity : AppCompatActivity(), OnNextFragment {
             .addToBackStack(null)
             .commit()
     }
+
+    private fun onNextFragment(fragmentName: AllFragmentNames, withoutBackStack: Boolean) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragmentFactory(fragmentName))
+            .commit()
+    }
+
+
 }
