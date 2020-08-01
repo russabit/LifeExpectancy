@@ -2,6 +2,7 @@ package ru.ruslan.life_expectancy.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.FragmentManager
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.ruslan.life_expectancy.R
 import timber.log.Timber
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity(), OnNextFragment {
         }
 
         navigationView.setOnNavigationItemSelectedListener {
+            supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
             when (it.itemId) {
                 R.id.new_person -> {
                     onNextFragment(AllFragmentNames.GENDER, false)
@@ -42,8 +44,8 @@ class MainActivity : AppCompatActivity(), OnNextFragment {
 
     }
 
-    override fun onNextFragment(fragmentName: AllFragmentNames, withoutBackStack: Boolean) {
-        if (withoutBackStack) supportFragmentManager
+    override fun onNextFragment(fragmentName: AllFragmentNames, saveToBackStack: Boolean) {
+        if (saveToBackStack) supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragmentFactory(fragmentName))
             .addToBackStack(null)

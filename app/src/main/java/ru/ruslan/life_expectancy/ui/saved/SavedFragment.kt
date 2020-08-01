@@ -10,12 +10,14 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_saved.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 import ru.ruslan.life_expectancy.domain.SavedPersonEntity
 import ru.ruslan.life_expectancy.ui.SharedViewModel
 import ru.ruslan.life_expectancy.R
 import ru.ruslan.life_expectancy.ui.AllFragmentNames
+import ru.ruslan.life_expectancy.ui.MainActivity
 import ru.ruslan.life_expectancy.ui.OnNextFragment
 
 
@@ -49,7 +51,11 @@ class SavedFragment : Fragment(), SavedPersonAdapter.OnViewListener {
             person?.let { adapter.setPersons(it) }
         })
 
-        fab.setOnClickListener { listener.onNextFragment(AllFragmentNames.GENDER, true) }
+        fab.setOnClickListener {
+            if (activity != null && activity is MainActivity)
+                (activity as MainActivity).navigationView.selectedItemId = R.id.new_person
+            listener.onNextFragment(AllFragmentNames.GENDER, true)
+        }
     }
 
     override fun onAttach(context: Context) {

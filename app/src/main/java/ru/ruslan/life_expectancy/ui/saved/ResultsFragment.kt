@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_results.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.threeten.bp.LocalDate
@@ -20,6 +21,7 @@ import ru.ruslan.life_expectancy.R
 import ru.ruslan.life_expectancy.ui.AllFragmentNames
 import ru.ruslan.life_expectancy.ui.OnNextFragment
 import ru.ruslan.life_expectancy.domain.Country
+import ru.ruslan.life_expectancy.ui.MainActivity
 import kotlin.math.roundToLong
 
 class ResultsFragment : Fragment() {
@@ -90,8 +92,11 @@ class ResultsFragment : Fragment() {
                     country.countryName
                 )
             )
-            listener.onNextFragment(AllFragmentNames.SAVED, false)
             parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            if (activity != null && activity is MainActivity)
+                (activity as MainActivity).navigationView.selectedItemId =
+                    R.id.list_of_saved_persons
+            listener.onNextFragment(AllFragmentNames.SAVED, false)
         }
     }
 
