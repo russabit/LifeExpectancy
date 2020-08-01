@@ -49,7 +49,7 @@ class SavedFragment : Fragment(), SavedPersonAdapter.OnViewListener {
             person?.let { adapter.setPersons(it) }
         })
 
-        fab.setOnClickListener { listener.onNextFragment(AllFragmentNames.GENDER) }
+        fab.setOnClickListener { listener.onNextFragment(AllFragmentNames.GENDER, true) }
     }
 
     override fun onAttach(context: Context) {
@@ -64,7 +64,7 @@ class SavedFragment : Fragment(), SavedPersonAdapter.OnViewListener {
     }
 
     override fun onViewClick(position: Int) {
-        listener.onNextFragment(AllFragmentNames.SAVEDRESULTS)
+        listener.onNextFragment(AllFragmentNames.SAVEDRESULTS, true)
         val personToSave = adapter.persons[position]
         viewModel.setSavedPerson(personToSave)
     }

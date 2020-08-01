@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_results.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
@@ -89,7 +90,8 @@ class ResultsFragment : Fragment() {
                     country.countryName
                 )
             )
-            listener.onNextFragment(AllFragmentNames.SAVED)
+            listener.onNextFragment(AllFragmentNames.SAVED, false)
+            parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
     }
 

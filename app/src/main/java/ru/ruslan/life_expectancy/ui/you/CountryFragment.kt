@@ -98,6 +98,6 @@ class CountryFragment : Fragment(), CountriesRecyclerAdapter.OnViewListener {
 
     override fun onViewClick(position: Int) {
         viewModel.setCountry(adapter.countries[position])
-        listener.onNextFragment(AllFragmentNames.RESULT)
+        listener.onNextFragment(AllFragmentNames.RESULT, true)
     }
 }

@@ -23,5 +23,5 @@ enum class AllFragmentNames {
 }
 
 interface OnNextFragment {
-    fun onNextFragment(fragmentName: AllFragmentNames)
+    fun onNextFragment(fragmentName: AllFragmentNames, saveToBackStack: Boolean)
 }

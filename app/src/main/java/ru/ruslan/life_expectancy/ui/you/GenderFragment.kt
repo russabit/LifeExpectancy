@@ -50,11 +50,11 @@ class GenderFragment : Fragment() {
 
         button_female.setOnClickListener {
             viewModel.setGender(false)
-            listener.onNextFragment(AllFragmentNames.AGE)
+            listener.onNextFragment(AllFragmentNames.AGE,true)
         }
         button_male.setOnClickListener {
             viewModel.setGender(true)
-            listener.onNextFragment(AllFragmentNames.AGE)
+            listener.onNextFragment(AllFragmentNames.AGE,true)
         }
     }
 }
